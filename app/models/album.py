@@ -12,13 +12,14 @@ class Album(db.Model):
     artist_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
-    artist_name = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(500), nullable=False)
-    description = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.String(500), nullable=False)
     image = db.Column(db.String(255), nullable=False)
     single = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    artist = db.relationship("User", back_populates="albums")
 
     def to_dict(self, timestamps=False):
         dct = {
@@ -28,7 +29,7 @@ class Album(db.Model):
             "name": self.name,
             "description": self.description,
             "image": self.image,
-            "single": self.single
+            "single": self.single,
         }
 
         if timestamps:

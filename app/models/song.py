@@ -13,7 +13,6 @@ class Song(db.Model):
     album_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
     )
-    artist_name = db.Column(db.String(255), nullable=False)
     song_url = db.Column(db.String(500), nullable=False)
     song_length = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String(255), nullable=False)
@@ -21,13 +20,14 @@ class Song(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     album = db.relationship("Album", backref="songs")
-    included_playlist = db.relationship("Playlist", secondary=playlist_songs, backref="included_songs")
+
+    included_playlists = db.relationship(
+        "Playlist", secondary=playlist_songs, backref="included_songs"
+    )
 
     def to_dict(self, timestamps=False):
         dct = {
             "id": self.id,
-            "albumId": self.album_id,
-            "artistName": self.artist_name,
             "songUrl": self.song_url,
             "song_length": self.song_length,
             "image": self.image,

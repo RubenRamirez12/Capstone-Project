@@ -14,11 +14,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_pic = db.Column(db.String(500), default="")
+    profile_pic = db.Column(db.String(500))
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     playlists = db.relationship("Playlist", back_populates="owner", cascade='all, delete')
+    albums = db.relationship("Album", back_populates="artist", cascade="all, delete")
 
     @property
     def password(self):
