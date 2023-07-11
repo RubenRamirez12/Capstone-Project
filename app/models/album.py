@@ -20,6 +20,7 @@ class Album(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     artist = db.relationship("User", back_populates="albums")
+    songs = db.relationship("Song", back_populates="album", cascade='all, delete')
 
     def to_dict(self, timestamps=False):
         dct = {

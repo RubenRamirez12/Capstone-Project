@@ -1,14 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
-
-playlist_songs = db.Table(
-    "playlist_songs",
-    db.metadata,
-    db.Column(
-        "playlist_id", db.Integer, db.ForeignKey("playlists.id"), primary_key=True
-    ),
-    db.Column("song_id", db.Integer, db.ForeignKey("songs.id"), primary_key=True),
-)
+from .playlist_songs import playlist_songs
 
 
 class Playlist(db.Model):
@@ -28,8 +20,9 @@ class Playlist(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     owner = db.relationship("User", back_populates="playlists")
-    included_songs = db.relationship(
-        "Song", secondary=playlist_songs, backref="included_playlists"
+
+    songs = db.relationship(
+        "Song", secondary=playlist_songs, back_populates="playlists"
     )
 
     def to_dict(self, timestamps=False):

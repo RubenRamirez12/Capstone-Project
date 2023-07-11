@@ -4,22 +4,32 @@ from sqlalchemy.sql import text
 
 def seed_albums():
     album1 = Album(
-        owner_id=2, artist_name="Tevvez", name="Phantom", description="Album by Tevvez"
+        artist_id=2,
+        name="Phantom",
+        description="Album by Tevvez",
+        image="TEST",
+        single=False,
     )
     album2 = Album(
-        owner_id=3,
-        artist_name="Lil Uzi Vert",
+        artist_id=3,
         name="Eternal Atake",
         description="Album by Lil Uzi Vert",
+        image="TEST",
+        single=False,
     )
     album3 = Album(
-        owner_id=4,
-        artist_name="Juice WRLD",
+        artist_id=4,
         name="Goodbye & Good Riddance",
         description="Album by JuiceWRLD",
+        image="TEST",
+        single=False,
     )
     album4 = Album(
-        owner_id=5, artist_name="Avicii", name="Stories", description="Album by Avicii"
+        artist_id=5,
+        name="Stories",
+        description="Album by Avicii",
+        image="TEST",
+        single=False,
     )
 
     db.session.add(album1)

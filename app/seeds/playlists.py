@@ -3,8 +3,8 @@ from sqlalchemy.sql import text
 
 
 def seed_playlists():
-    playlist1 = Playlist(owner_id = 1, owner_name="Demo", name="personal favorites", description="A bunch of songs that i like")
-    playlist2 = Playlist(owner_id = 1, owner_name="Demo", name="rap music", description="Rap Songs I like")
+    playlist1 = Playlist(owner_id = 1, name="personal favorites", description="A bunch of songs that i like")
+    playlist2 = Playlist(owner_id = 1, name="rap music", description="Rap Songs I like")
 
 
     db.session.add(playlist1)
