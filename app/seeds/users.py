@@ -10,7 +10,6 @@ def seed_users():
     juiceWRLD = User(username="Juice WRLD", email="juiceWRLD@aa.io", password='password', profile_pic="test")
     avicii = User(username="Avicii", email="avicii@aa.io", password='password', profile_pic="test")
 
-
     db.session.add(demo)
     db.session.add(tevvez)
     db.session.add(lilUzi)

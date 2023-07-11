@@ -14,7 +14,7 @@ class Album(db.Model):
     )
     name = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-    image = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
     single = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())

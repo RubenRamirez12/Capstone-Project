@@ -15,7 +15,7 @@ class Song(db.Model):
     )
     song_url = db.Column(db.String(500), nullable=False)
     song_length = db.Column(db.Integer, nullable=False)
-    image = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 

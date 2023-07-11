@@ -16,14 +16,42 @@ const actionCreatePlaylist = (body) => ({
 });
 
 //thunks
-export const thunkGetPlaylists = () => async (dispatch) => {};
+export const thunkGetAllPlaylists = () => async (dispatch) => {
+  const res = await fetch('/api/playlists/getAll')
 
-export const thunkCreatePlaylist = () => async (dispatch) => {};
+  if (res.ok) {
+    const data = await res.json()
+    const normalized = {}
+    for (let playlist of data.playlists) {
+      normalized[playlist.id] = playlist
+    }
+    return dispatch(actionLoadPlaylists(normalized))
+  }else {
+    console.log("ERROR IN THUNK GET ALL PLAYLISTS")
+  }
+};
+
+export const thunkCreatePlaylist = () => async (dispatch) => {
+  const res = await fetch('/api/playlists/create')
+
+  if (res.ok) {
+    const data = await res.json()
+    return dispatch(actionCreatePlaylist({[data.id]: {...data}}))
+  } else {
+    console.log("ERROR IN thunkCreatePlaylist")
+  }
+};
 
 const initialState = { playlists: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD_PLAYLISTS:
+      return {...state, playlists: action.payload}
+
+    case CREATE_PLAYLIST:
+      return { ...state, playlists: {...state.playlists, ...action.payload}}
+
     default:
       return state;
   }
