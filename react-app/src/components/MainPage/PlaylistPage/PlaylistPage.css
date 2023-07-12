@@ -1,0 +1,7 @@
+.playlist-page__div {
+    color: white;
+    width: 100%;
+    background-image: linear-gradient(rgb(33,33,33), rgb(0,0,0));
+    margin: 10px 10px 10px 0px;
+    border-radius: 7px;
+}

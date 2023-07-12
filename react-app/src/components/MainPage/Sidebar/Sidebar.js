@@ -25,16 +25,17 @@ export default function Sidebar() {
 
   const createPlaylist = async () => {
     if (user) {
-      setDroppedDown(false)
+      setDroppedDown(false);
       const data = await dispatch(thunkCreatePlaylist());
-      console.log(data)
+      let newId = Object.keys(data.payload)[0]
+      history.push(`/main/playlists/${newId}`);
     } else {
       return history.push("/account/login");
     }
   };
 
   const handleNewAlbum = async () => {
-    setDroppedDown(false)
+    setDroppedDown(false);
   };
 
   return (
@@ -65,12 +66,12 @@ export default function Sidebar() {
         </div>
         {droppedDown && (
           <div className="sidebar__dropdown">
-            <button className="side__dropdown-item">
-              <i className="fa-solid fa-music" onClick={createPlaylist} />
+            <button className="side__dropdown-item" onClick={createPlaylist}>
+              <i className="fa-solid fa-music" />
               Create a new playlist
             </button>
-            <button className="side__dropdown-item">
-              <i className="fa-solid fa-compact-disc" onClick={handleNewAlbum} />
+            <button className="side__dropdown-item" onClick={handleNewAlbum}>
+              <i className="fa-solid fa-compact-disc" />
               Create a new album
             </button>
           </div>

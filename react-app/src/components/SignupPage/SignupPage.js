@@ -34,7 +34,7 @@ export default function SignupPage() {
     <div className="signup__div">
       <form onSubmit={handleSubmit} className="signup__form">
         <div className="signup__top">
-          <img src={blackWhiteLogo} className="signup__logo" /> Groovify
+          <img src={blackWhiteLogo} className="signup__logo" alt=""/> Groovify
         </div>
         <h1 className="signup__h1">Sign up for free to start listening.</h1>
 

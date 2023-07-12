@@ -9,7 +9,8 @@ playlist_routes = Blueprint('playlists', __name__)
 def create_playlist():
     new_playlist = Playlist(
         owner_id = current_user.id,
-        name = f"My Playlist #{len(current_user.playlists) + 1}"
+        name = f"My Playlist #{len(current_user.playlists) + 1}",
+        image_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/No+playlist+image.png"
     )
     db.session.add(new_playlist)
     db.session.commit()

@@ -11,3 +11,9 @@ def get_all_playlists():
     all_albums = [album.to_dict() for album in all_albums_query]
 
     return { "albums": all_albums }
+
+@album_routes.route('/getOne/<int:albumId>')
+def get_one_album(albumId):
+    album = Album.query.get(albumId)
+
+    return {"album": album.to_dict_single()}

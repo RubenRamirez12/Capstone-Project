@@ -7,28 +7,28 @@ def seed_albums():
         artist_id=2,
         name="Phantom",
         description="Album by Tevvez",
-        image_url="TEST",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/Phantom-Tevvez.jpeg",
         single=False,
     )
     album2 = Album(
         artist_id=3,
         name="Eternal Atake",
         description="Album by Lil Uzi Vert",
-        image_url="TEST",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/Eternal_Atake_Lil_Uzi_Vert.jpg",
         single=False,
     )
     album3 = Album(
         artist_id=4,
         name="Goodbye & Good Riddance",
         description="Album by JuiceWRLD",
-        image_url="TEST",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/G%26GR-juiceWrld.png",
         single=False,
     )
     album4 = Album(
         artist_id=5,
         name="Stories",
         description="Album by Avicii",
-        image_url="TEST",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/Stories-Avicii.png",
         single=False,
     )
 

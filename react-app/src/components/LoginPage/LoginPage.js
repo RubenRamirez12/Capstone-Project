@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <div className="login-page__div">
       <div className="login-page__nav">
-        <img className="login-page__logo" src={whiteBlackLogo} /> Groovify
+        <img className="login-page__logo" src={whiteBlackLogo} alt=""/> Groovify
       </div>
       <form onSubmit={handleSubmit} className="login-page__form">
         <h1 className="login-page__form-h1">Log in to Groovify</h1>

@@ -13,9 +13,9 @@ class Song(db.Model):
     album_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
     )
+    name = db.Column(db.String(200), nullable=False)
     song_url = db.Column(db.String(500), nullable=False)
     song_length = db.Column(db.Integer, nullable=False)
-    image_url = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
@@ -28,8 +28,10 @@ class Song(db.Model):
     def to_dict(self, timestamps=False):
         dct = {
             "id": self.id,
+            "albumId": self.album_id,
+            "name": self.name,
             "songUrl": self.song_url,
-            "song_length": self.song_length,
+            "songLength": self.song_length,
             "image": self.image,
         }
 
