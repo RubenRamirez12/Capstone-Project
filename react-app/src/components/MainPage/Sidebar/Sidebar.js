@@ -17,7 +17,9 @@ export default function Sidebar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkGetAllPlaylists());
+    if (user) {
+      dispatch(thunkGetAllPlaylists());
+    }
   }, [dispatch, user]);
 
   const createPlaylist = async () => {
@@ -55,7 +57,7 @@ export default function Sidebar() {
           )}
 
           <ul className="sidebar__playlist-list">
-            {playlists.map((playlist) => {
+            {user && playlists.map((playlist) => {
               return (
                 <li key={playlist.id} className="sidebar__playlist-entry">
                   <Link
@@ -64,6 +66,7 @@ export default function Sidebar() {
                     <img
                       className="sidebar__playlist-image"
                       src={playlist.imageUrl}
+                      alt=""
                     />
                     <div className="sidebar__playlist-info">
                       <p className="sidebar__playlist-info__name">

@@ -1,8 +1,7 @@
 // constants
 const LOAD_PLAYLISTS = "playlist/LOAD_PLAYLISTS";
 const CREATE_PLAYLIST = "playlist/CREATE_PLAYLIST";
-const DELETE_PLAYLIST = "playlist/DELETE_PLAYLIST";
-const EDIT_PLAYLIST = "playlist/EDIT_PLAYLIST";
+const CLEAR_PLAYLIST = "playlist/CLEAR_PLAYLIST"
 
 //actions
 const actionLoadPlaylists = (body) => ({
@@ -14,6 +13,10 @@ const actionCreatePlaylist = (body) => ({
   type: CREATE_PLAYLIST,
   payload: body,
 });
+
+export const actionClearPlaylist = () => ({
+  type: CLEAR_PLAYLIST
+})
 
 //thunks
 export const thunkGetAllPlaylists = () => async (dispatch) => {
@@ -46,6 +49,10 @@ const initialState = { playlists: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+
+    case CLEAR_PLAYLIST:
+      return { playlists: {} }
+
     case LOAD_PLAYLISTS:
       return {...state, playlists: action.payload}
 

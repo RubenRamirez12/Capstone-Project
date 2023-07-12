@@ -23,16 +23,20 @@ class Album(db.Model):
     songs = db.relationship("Song", back_populates="album", cascade='all, delete')
 
     def to_dict(self, timestamps=False):
+        artist = self.artist
+
         dct = {
             "id": self.id,
             "artistId": self.artist_id,
-            "artistName": self.artist_name,
+            "artistName": artist.username,
             "name": self.name,
             "description": self.description,
-            "image": self.image,
+            "imageUrl": self.image_url,
             "single": self.single,
         }
 
         if timestamps:
             dct["createdAt"] = self.created_at
             dct["updatedAt"] = self.updated_at
+
+        return dct

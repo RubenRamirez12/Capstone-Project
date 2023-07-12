@@ -18,6 +18,7 @@ function App() {
     <>
       {isLoaded && (
         <Switch>
+
           <Route exact path="/">
             <Redirect to="/main" />
           </Route>
@@ -37,6 +38,7 @@ function App() {
           <Route>
             <Redirect to="/main" />
           </Route>
+
         </Switch>
       )}
     </>

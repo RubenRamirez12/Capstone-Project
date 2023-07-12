@@ -37,6 +37,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'profilePic': self.profile_pic
         }
 
         if timestamps:

@@ -1,20 +1,28 @@
 import Sidebar from "./Sidebar";
 import "./MainPage.css";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import Browse from './Browse'
 
 export default function MainPage() {
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-    console.log("Logged Out!");
-  };
+
   return (
     <div className="main-page__div">
       <Sidebar />
-      <div>
-        <button onClick={handleLogout}>LOGOUT</button>
-      </div>
+      <Switch>
+
+        <Route exact path="/main">
+          <Browse />
+        </Route>
+
+        <Route path="/main/playlists/:id"></Route>
+
+        <Route path="/main/albums/:id"></Route>
+
+        <Route>
+          <Redirect to="/main"/>
+        </Route>
+
+      </Switch>
     </div>
   );
 }
