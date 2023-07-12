@@ -1,14 +1,17 @@
 """create tables
 
 Revision ID: fb6f1b20c529
-Revises: 
+Revises:
 Create Date: 2023-07-11 13:44:12.815693
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
 
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 # revision identifiers, used by Alembic.
 revision = 'fb6f1b20c529'
 down_revision = None
@@ -71,6 +74,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('playlist_id', 'song_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE albums SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
