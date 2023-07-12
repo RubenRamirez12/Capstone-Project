@@ -15,7 +15,7 @@ class Playlist(db.Model):
     )
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(500))
-    image = db.Column(db.String(255))
+    image_url = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
@@ -28,10 +28,13 @@ class Playlist(db.Model):
     def to_dict(self, timestamps=False):
         dct = {
             "id": self.id,
+            "name": self.name,
             "description": self.description,
-            "image": self.image,
+            "imageUrl": self.image_url
         }
 
         if timestamps:
             dct["createdAt"] = self.created_at
             dct["updatedAt"] = self.updated_at
+
+        return dct

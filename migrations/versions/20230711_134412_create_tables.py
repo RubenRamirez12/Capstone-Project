@@ -1,8 +1,8 @@
 """create tables
 
-Revision ID: 330cb4bdd9e1
+Revision ID: fb6f1b20c529
 Revises:
-Create Date: 2023-07-11 07:10:53.511744
+Create Date: 2023-07-11 13:44:12.815693
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 # revision identifiers, used by Alembic.
-revision = '330cb4bdd9e1'
+revision = 'fb6f1b20c529'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,7 +38,7 @@ def upgrade():
     sa.Column('artist_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=500), nullable=False),
     sa.Column('description', sa.String(length=500), nullable=False),
-    sa.Column('image', sa.String(length=255), nullable=False),
+    sa.Column('image_url', sa.String(length=255), nullable=False),
     sa.Column('single', sa.Boolean(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
@@ -50,7 +50,7 @@ def upgrade():
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('description', sa.String(length=500), nullable=True),
-    sa.Column('image', sa.String(length=255), nullable=True),
+    sa.Column('image_url', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
@@ -61,7 +61,7 @@ def upgrade():
     sa.Column('album_id', sa.Integer(), nullable=False),
     sa.Column('song_url', sa.String(length=500), nullable=False),
     sa.Column('song_length', sa.Integer(), nullable=False),
-    sa.Column('image', sa.String(length=255), nullable=False),
+    sa.Column('image_url', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),

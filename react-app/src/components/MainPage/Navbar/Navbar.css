@@ -1,0 +1,35 @@
+.nav-bar__profile-button {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(24,24,24);
+    border-radius: 100%;
+    border: none;
+    position: relative;
+}
+
+.nav-bar__dropdown-menu {
+    position: absolute;
+    top: 85px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    width: 100px;
+    padding: 10px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 7px;
+}
+
+.nav-bar__dropdown-menu > li {
+    padding: 5px;
+}
+
+.nav-bar__logout {
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 7px;
+}

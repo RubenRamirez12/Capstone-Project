@@ -1,0 +1,32 @@
+.browse__div {
+    color: white;
+    width: 100%;
+    background-image: linear-gradient(rgb(33,33,33), rgb(0,0,0));
+    margin: 10px 10px 10px 0px;
+    border-radius: 7px;
+}
+
+.browse__top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.browse__catalog {
+    padding: 25px;
+}
+
+.browse__album-list {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    padding-top: 25px;
+    text-decoration: none
+}
+
+.browse__list-link {
+    text-decoration: none;
+    color: white;
+}

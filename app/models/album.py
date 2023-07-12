@@ -14,7 +14,7 @@ class Album(db.Model):
     )
     name = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-    image = db.Column(db.String(255), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
     single = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
@@ -23,16 +23,20 @@ class Album(db.Model):
     songs = db.relationship("Song", back_populates="album", cascade='all, delete')
 
     def to_dict(self, timestamps=False):
+        artist = self.artist
+
         dct = {
             "id": self.id,
             "artistId": self.artist_id,
-            "artistName": self.artist_name,
+            "artistName": artist.username,
             "name": self.name,
             "description": self.description,
-            "image": self.image,
+            "imageUrl": self.image_url,
             "single": self.single,
         }
 
         if timestamps:
             dct["createdAt"] = self.created_at
             dct["updatedAt"] = self.updated_at
+
+        return dct
