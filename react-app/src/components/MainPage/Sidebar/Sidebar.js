@@ -25,10 +25,16 @@ export default function Sidebar() {
 
   const createPlaylist = async () => {
     if (user) {
-      dispatch(thunkCreatePlaylist());
+      setDroppedDown(false)
+      const data = await dispatch(thunkCreatePlaylist());
+      console.log(data)
     } else {
       return history.push("/account/login");
     }
+  };
+
+  const handleNewAlbum = async () => {
+    setDroppedDown(false)
   };
 
   return (
@@ -43,7 +49,7 @@ export default function Sidebar() {
         <button
           className="sidebar__nav-button"
           onClick={() => alert("Feature Coming Soon!")}>
-          <i class="fa-solid fa-magnifying-glass" />
+          <i className="fa-solid fa-magnifying-glass" />
           Search
         </button>
       </div>
@@ -59,8 +65,14 @@ export default function Sidebar() {
         </div>
         {droppedDown && (
           <div className="sidebar__dropdown">
-            <button>playlist</button>
-            <button>album</button>
+            <button className="side__dropdown-item">
+              <i className="fa-solid fa-music" onClick={createPlaylist} />
+              Create a new playlist
+            </button>
+            <button className="side__dropdown-item">
+              <i className="fa-solid fa-compact-disc" onClick={handleNewAlbum} />
+              Create a new album
+            </button>
           </div>
         )}
 

@@ -2,6 +2,8 @@ import Sidebar from "./Sidebar";
 import "./MainPage.css";
 import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Browse from './Browse'
+import PlaylistPage from "./PlaylistPage/PlaylistPage";
+import AlbumPage from "./AlbumPage/AlbumPage";
 
 export default function MainPage() {
 
@@ -14,9 +16,13 @@ export default function MainPage() {
           <Browse />
         </Route>
 
-        <Route path="/main/playlists/:id"></Route>
+        <Route path="/main/playlists/:id">
+          <PlaylistPage />
+        </Route>
 
-        <Route path="/main/albums/:id"></Route>
+        <Route path="/main/albums/:id">
+          <AlbumPage />
+        </Route>
 
         <Route>
           <Redirect to="/main"/>

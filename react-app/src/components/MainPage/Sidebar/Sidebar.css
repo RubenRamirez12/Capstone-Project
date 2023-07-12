@@ -37,12 +37,28 @@
 
 .sidebar__dropdown {
   position: absolute;
-  left: 220px;
+  left: 290px;
+  bottom: 610px;
   display: flex;
   flex-direction: column;
   background-color: rgb(40,40,40);
-  width: 50px;
-  height: 70px;
+  border-radius: 5px;
+}
+
+.side__dropdown-item {
+  padding: 15px 25px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: start;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.side__dropdown-item:hover {
+  background-color: rgb(60,60,60);
+  border-radius: 5px;
 }
 
 .sidebar__library {
