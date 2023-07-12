@@ -10,6 +10,7 @@
 .nav-bar__dropdown-menu {
     position: absolute;
     top: 85px;
+    right: 15px;
 
     display: flex;
     flex-direction: column;
@@ -32,4 +33,36 @@
     font-weight: bold;
     padding: 5px;
     border-radius: 7px;
+}
+
+.nav-bar__no-user-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.nav-bar__signup {
+    background-color: transparent;
+    color: rgb(144,144,144);
+    font-weight: bold;
+    font-size: 17px;
+    border: none;
+}
+
+.nav-bar__login {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+    width: 120px;
+    height: 50px;
+    border-radius: 40px;
+}
+
+.nav-bar__logged-in-div {
+    height: 50px;
+}
+
+.nav-bar__no-user-buttons {
+    height: 50px;
 }

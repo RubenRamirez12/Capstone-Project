@@ -9,7 +9,7 @@ playlist_routes = Blueprint('playlists', __name__)
 def create_playlist():
     new_playlist = Playlist(
         owner_id = current_user.id,
-        name = f"My Playlist #{len(current_user.playlists)}"
+        name = f"My Playlist #{len(current_user.playlists) + 1}"
     )
     db.session.add(new_playlist)
     db.session.commit()

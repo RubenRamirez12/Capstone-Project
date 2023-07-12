@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import SignupPage from "./components/SignupPage";
 import LoginPage from "./components/LoginPage";
 import { authenticate } from "./store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
@@ -32,7 +32,7 @@ function App() {
           </Route>
 
           <Route path="/account/signup">
-            <SignupFormPage />
+            <SignupPage />
           </Route>
 
           <Route>
