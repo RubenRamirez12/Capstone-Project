@@ -1,19 +1,16 @@
 """create tables
 
-Revision ID: de18f652bce4
-Revises:
-Create Date: 2023-07-12 10:18:23.132908
+Revision ID: f138cad0b4d7
+Revises: 
+Create Date: 2023-07-13 08:55:54.108041
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
 
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 # revision identifiers, used by Alembic.
-revision = 'de18f652bce4'
+revision = 'f138cad0b4d7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,8 +33,8 @@ def upgrade():
     op.create_table('albums',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('artist_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=500), nullable=False),
-    sa.Column('description', sa.String(length=500), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=False),
+    sa.Column('description', sa.String(length=150), nullable=False),
     sa.Column('image_url', sa.String(length=255), nullable=False),
     sa.Column('single', sa.Boolean(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
@@ -61,7 +58,7 @@ def upgrade():
     sa.Column('album_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('song_url', sa.String(length=500), nullable=False),
-    sa.Column('song_length', sa.Integer(), nullable=False),
+    sa.Column('song_length', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
@@ -74,12 +71,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('playlist_id', 'song_id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE albums SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

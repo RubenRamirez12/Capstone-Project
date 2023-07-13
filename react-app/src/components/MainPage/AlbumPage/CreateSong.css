@@ -1,0 +1,67 @@
+.create-song__div {
+    background-color: rgb(34, 34, 34);
+    width: 600px;
+    height: 350px;
+    padding: 25px;
+    border-radius: 7px;
+    margin: -10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-song__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.create-song__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 250px;
+}
+
+.create-song__album-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-song__album-img {
+    width: 200px;
+    height: 200px;
+}
+
+.create-song__song-input {
+    align-self: flex-end;
+}
+
+.create-song__name-input {
+    border: none;
+    color: rgb(190, 190, 190);
+    background-color: rgb(64, 64, 64);
+    padding-left: 10px;
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.create-song__error {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    top: 95px
+}
+
+.create-song__submit-button {
+    border-radius: 50px;
+    border: none;
+    height: 30px;
+    width: 100px;
+    align-self: flex-end;
+    background-color: rgb(30,215,96);
+    align-self: center;
+}
