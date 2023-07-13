@@ -71,7 +71,7 @@ export default function AlbumPage() {
             <div className="album-page__header1">#</div>
             <div className="album-page__header2">Title</div>
             <div className="album-page__header3">
-              {/* <i class="fa-solid fa-clock" /> */}
+              {/* <i className="fa-solid fa-clock" /> */}
             </div>
           </div>
         </div>

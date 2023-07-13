@@ -61,7 +61,7 @@ export default function Sidebar() {
           <button
             className="sidebar__nav-button"
             onClick={() => setDroppedDown(!droppedDown)}>
-            <i class="fa-regular fa-plus" />
+            <i className="fa-regular fa-plus" />
           </button>
         </div>
         {droppedDown && (
