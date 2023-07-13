@@ -5,10 +5,10 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(username="Demo", email="demo@aa.io", password="password", profile_pic="test")
-    tevvez = User(username="Tevvez", email="tevvez@aa.io", password="password", profile_pic="test")
-    lilUzi = User(username="Lil Uzi Vert", email="lilUzi@aa.io", password="password", profile_pic="test")
-    juiceWRLD = User(username="Juice WRLD", email="juiceWRLD@aa.io", password='password', profile_pic="test")
-    avicii = User(username="Avicii", email="avicii@aa.io", password='password', profile_pic="test")
+    tevvez = User(username="Tevvez", email="tevvez@aa.io", password="password", profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/TevvezPfp.jpeg")
+    lilUzi = User(username="Lil Uzi Vert", email="lilUzi@aa.io", password="password", profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/liluziPfp.jpeg")
+    juiceWRLD = User(username="Juice WRLD", email="juiceWRLD@aa.io", password='password', profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/JuiceWrldPfp.jpeg")
+    avicii = User(username="Avicii", email="avicii@aa.io", password='password', profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/AviciiPfp.jpeg")
 
     db.session.add(demo)
     db.session.add(tevvez)

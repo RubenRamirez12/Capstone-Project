@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./EditAlbumSong.css";
 import { useDispatch } from "react-redux";
 import { thunkEditAlbumSong } from "../../../store/album";
+import { useModal } from "../../../context/Modal";
 
 export default function EditAlbumSong({ currentSong }) {
   const dispatch = useDispatch();
   const [name, setName] = useState(currentSong.name);
   const [song, setSong] = useState(null);
+  const { closeModal } = useModal()
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ export default function EditAlbumSong({ currentSong }) {
     }
 
     dispatch(thunkEditAlbumSong(currentSong.id, formData))
+    closeModal()
   };
 
   return (
@@ -43,8 +46,8 @@ export default function EditAlbumSong({ currentSong }) {
           className="edit-song__song-input"
         />
         <div className="edit-song__buttons-div">
-          <button className="edit-song__delete" onClick={() => alert("Feature coming soon!")}>Delete</button>
           <button className="edit-song__submit" type="submit">Submit</button>
+          <button className="edit-song__delete" onClick={() => alert("Feature coming soon!")}>Delete</button>
         </div>
       </form>
     </div>

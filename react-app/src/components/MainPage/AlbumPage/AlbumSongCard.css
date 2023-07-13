@@ -21,7 +21,9 @@
 }
 
 .album-song-card__number {
-    color: rgb(130, 130, 130)
+    color: rgb(130, 130, 130);
+    width: 25px;
+
 }
 
 .album-song-card__name {

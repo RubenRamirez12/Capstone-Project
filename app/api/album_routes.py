@@ -86,6 +86,6 @@ def create_album_song(albumId):
 
         db.session.commit()
 
-        return newSong.to_dict()
+        return newSong.to_dict(timestamps=True)
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401

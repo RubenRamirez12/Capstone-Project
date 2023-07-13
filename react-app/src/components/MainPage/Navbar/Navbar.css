@@ -5,6 +5,7 @@
     border-radius: 100%;
     border: none;
     position: relative;
+    background-size: cover;
 }
 
 .nav-bar__dropdown-menu {

@@ -1,7 +1,7 @@
 import "./AlbumPage.css";
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetSingleAlbum } from "../../../store/album";
 import OpenModalButton from "../../OpenModalButton";
@@ -18,6 +18,7 @@ export default function AlbumPage() {
   useEffect(() => {
     dispatch(thunkGetSingleAlbum(albumId));
   }, [dispatch, albumId]);
+
 
   if (Object.values(album).length === 0) {
     return <></>;
@@ -76,14 +77,20 @@ export default function AlbumPage() {
         </div>
 
         <ul className="album-page__song-list">
-          {album.songs.map((song, index) => {
-            return (
-              <li key={index}>
-                {" "}
-                <AlbumSongCard song={song} index={index + 1}/>
-              </li>
-            );
-          })}
+          {album.songs
+            .sort((a, b) => {
+              const createdAtA = new Date(a.createdAt).getTime();
+              const createdAtB = new Date(b.createdAt).getTime();
+              return createdAtA - createdAtB;
+            })
+            .map((song, index) => {
+              return (
+                <li key={index}>
+                  {" "}
+                  <AlbumSongCard song={song} index={index + 1} />
+                </li>
+              );
+            })}
         </ul>
       </div>
       {user && user.id === album.artistId && (

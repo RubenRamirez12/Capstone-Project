@@ -29,6 +29,6 @@ def edit_song(songId):
 
         db.session.commit()
 
-        return current_song.to_dict()
+        return current_song.to_dict(timestamps=True)
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
