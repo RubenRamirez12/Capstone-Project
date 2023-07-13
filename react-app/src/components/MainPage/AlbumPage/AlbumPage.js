@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetSingleAlbum } from "../../../store/album";
 import OpenModalButton from "../../OpenModalButton";
 import EditAlbum from "./EditAlbum";
+import CreateSong from "./CreateSong";
 
 export default function AlbumPage() {
   const { albumId } = useParams();
@@ -29,7 +30,11 @@ export default function AlbumPage() {
 
       <div className="album-page__title">
         <div className="album-page__album-image-div">
-          <img className="album-page__album-image" src={album.imageUrl} alt=""/>
+          <img
+            className="album-page__album-image"
+            src={album.imageUrl}
+            alt=""
+          />
         </div>
 
         <div className="album-page__album-info">
@@ -53,7 +58,7 @@ export default function AlbumPage() {
             </button>
             {user && user.id === album.artistId && (
               <OpenModalButton
-                modalComponent={<EditAlbum album={album}/>}
+                modalComponent={<EditAlbum album={album} />}
                 buttonText={<i class="fa-solid fa-ellipsis" />}
                 buttonClass={"album-page__owner-options-button"}
               />
@@ -80,6 +85,13 @@ export default function AlbumPage() {
           })}
         </ul>
       </div>
+      {user && user.id === album.artistId && (
+        <OpenModalButton
+          modalComponent={<CreateSong album={album} />}
+          buttonText={"add a Song"}
+          buttonClass={"album-page__create-song-button"}
+        />
+      )}
     </div>
   );
 }

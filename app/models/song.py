@@ -15,7 +15,7 @@ class Song(db.Model):
     )
     name = db.Column(db.String(200), nullable=False)
     song_url = db.Column(db.String(500), nullable=False)
-    song_length = db.Column(db.Integer, nullable=False)
+    song_length = db.Column(db.Integer)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 

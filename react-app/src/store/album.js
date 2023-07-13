@@ -2,6 +2,7 @@
 const LOAD_ALBUMS = "album/LOAD_ALBUM";
 const LOAD_SINGLE_ALBUM = "album/LOAD_SINGLE_ALBUM";
 const EDIT_ALBUM = "album/EDIT_ALBUM";
+const CREATE_ALBUM_SONG = "album/CREATE_ALBUM_SONG"
 
 //actions
 const actionLoadAlbums = (body) => ({
@@ -18,6 +19,11 @@ const actionEditAlbum = (body) => ({
   type: EDIT_ALBUM,
   payload: body,
 });
+
+const actionCreateAlbumSong = (body) => ({
+  type: CREATE_ALBUM_SONG,
+  payload: body
+})
 //thunks
 export const thunkGetAllAlbums = () => async (dispatch) => {
   const res = await fetch("/api/albums/getAll");
@@ -54,12 +60,27 @@ export const thunkEditAlbum = (albumId, formData) => async (dispatch) => {
 
   if (res.ok) {
     const updated_album = await res.json();
-	dispatch(actionEditAlbum(updated_album))
+	  dispatch(actionEditAlbum(updated_album))
   } else {
     console.log("ERROR IN thunk edit album");
   }
 
 };
+
+export const thunkCreateAlbumSong = (albumId, formData) => async (dispatch) => {
+  const res = await fetch(`/api/albums/${albumId}/song`, {
+    method: "POST",
+    body: formData
+  })
+
+  if (res.ok) {
+    const newSong = await res.json()
+    console.log(newSong)
+    return newSong
+  } else {
+    console.log("ERROR IN THUNK CREATE ALBUM SONG")
+  }
+}
 
 const initialState = { albums: {}, singleAlbum: {} };
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from ..models import User, Album, db
-from ..forms import EditAlbumForm
+from ..models import User, Album, db, Song
+from ..forms import EditAlbumForm, CreateSongForm
 from .aws_helpers import get_unique_filename, upload_file_to_s3
 from .auth_routes import validation_errors_to_error_messages
 
@@ -41,7 +41,6 @@ def edit_album(albumId):
             image = form.data["image"]
             image.filename = get_unique_filename(image.filename)
             upload = upload_file_to_s3(image)
-            print(upload)
 
             if "url" not in upload:
                 return {ERROR: "HERE IS ERROR"}
@@ -53,5 +52,39 @@ def edit_album(albumId):
         db.session.commit()
 
         return album.to_dict_single()
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@album_routes.route("/<int:albumId>/song", methods=["POST"])
+@login_required
+def create_album_song(albumId):
+    form = CreateSongForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        album = Album.query.get(albumId)
+
+        if album is None or album.artist_id != current_user.id:
+            return {"errors": "Album not found"}, 404
+
+            song = form.data["song"]
+            song.filename = get_unique_filename(song.filename)
+            upload = upload_file_to_s3(song)
+
+            if "url" not in upload:
+                return {ERROR: "HERE IS ERROR"}
+
+        # newSong = Song(
+        #     album_id=form.data["album_id"],
+        #     name=form.data["name"],
+        #     song_url=upload["url"],
+        # )
+
+        # db.session.add(newSong)
+        # db.session.commit()
+
+        # return newSong.to_dict()
+        return {}
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
