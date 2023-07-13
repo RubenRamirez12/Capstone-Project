@@ -32,7 +32,6 @@ class Song(db.Model):
             "name": self.name,
             "songUrl": self.song_url,
             "songLength": self.song_length,
-            "image": self.image,
         }
 
         if timestamps:
