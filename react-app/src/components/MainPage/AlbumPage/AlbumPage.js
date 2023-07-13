@@ -56,12 +56,12 @@ export default function AlbumPage() {
         <div className="album-page__main-top">
           <div className="album-page__main-buttons">
             <button className="album-page__green-play-button">
-              <i class="fa-solid fa-play" />
+              <i className="fa-solid fa-play" />
             </button>
             {user && user.id === album.artistId && (
               <OpenModalButton
                 modalComponent={<EditAlbum album={album} />}
-                buttonText={<i class="fa-solid fa-ellipsis" />}
+                buttonText={<i className="fa-solid fa-ellipsis" />}
                 buttonClass={"album-page__owner-options-button"}
               />
             )}
@@ -71,7 +71,7 @@ export default function AlbumPage() {
             <div className="album-page__header1">#</div>
             <div className="album-page__header2">Title</div>
             <div className="album-page__header3">
-              {/* <i class="fa-solid fa-clock" /> */}
+              {/* <i className="fa-solid fa-clock" /> */}
             </div>
           </div>
         </div>

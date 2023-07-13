@@ -18,7 +18,7 @@ export default function AlbumSongCard({ song, index }) {
           index
         ) : (
           <button className="album-song-card__play-song-button">
-            <i class="fa-solid fa-play" />
+            <i className="fa-solid fa-play" />
           </button>
         )}{" "}
       </div>
