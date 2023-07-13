@@ -29,7 +29,7 @@ export default function AlbumPage() {
 
       <div className="album-page__title">
         <div className="album-page__album-image-div">
-          <img className="album-page__album-image" src={album.imageUrl} />
+          <img className="album-page__album-image" src={album.imageUrl} alt=""/>
         </div>
 
         <div className="album-page__album-info">
@@ -38,6 +38,7 @@ export default function AlbumPage() {
             <img
               src={album.artistPic}
               className="album-page__album-info-image"
+              alt=""
             />
             {album.artistName} • {album.songs.length} songs{" "}
           </p>
