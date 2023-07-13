@@ -43,7 +43,7 @@ class Album(db.Model):
 
     def to_dict_single(self, timestamps=False):
         artist = self.artist
-        songs = [song.to_dict() for song in self.songs]
+        songs = [song.to_dict(timestamps=True) for song in self.songs]
         dct = {
             "id": self.id,
             "artistId": artist.id,
