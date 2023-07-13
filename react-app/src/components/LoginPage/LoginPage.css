@@ -12,7 +12,32 @@
     background-color: black;
     display: flex;
     color: white;
+    align-items: center;
+    padding-left: 40px;
+    font-size: 25px;
+    gap: 10px;
 }
+
+.login-page__demo-user {
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color:white;
+    margin-bottom: 35px;
+    font-size: 15px;
+    /* tex */
+}
+
+.login-page__demo-user:hover {
+    color: rgb(43,213,88);
+}
+
+.login-page__logo {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
 .login-page__form {
     display: flex;
     flex-direction: column;
@@ -83,4 +108,8 @@
 
 .login-page__sign-up-link {
     color: white;
+}
+
+.login-page__sign-up-link:hover {
+    color: rgb(43,213,88);
 }

@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginPage.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import whiteBlackLogo from "../../Images/LogoWhiteBlack.jpeg";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
+  const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -16,16 +17,21 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(credential, password));
     if (data) {
       setErrors(data);
     }
   };
 
+  const handleDemoUser = (e) => {
+    e.preventDefault()
+    dispatch(login("Demo", "password"));
+  }
+
   return (
     <div className="login-page__div">
       <div className="login-page__nav">
-        ICON GOES HERE
+        <img className="login-page__logo" src={whiteBlackLogo} alt=""/> Groovify
       </div>
       <form onSubmit={handleSubmit} className="login-page__form">
         <h1 className="login-page__form-h1">Log in to Groovify</h1>
@@ -38,8 +44,8 @@ export default function LoginPage() {
           Email or username
           <input
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
             required
             placeholder="Email or username"
             className="login-page__input"
@@ -59,9 +65,13 @@ export default function LoginPage() {
         <button type="submit" className="login-page__submit-button">
           Log In
         </button>
+        <button className="login-page__demo-user" onClick={(e) => handleDemoUser(e)}>Log in as Demo User</button>
         <div className="login-page__sign-up">
-          Don't have an account?{"  "}
-          <Link to="/account/signup" className="login-page__sign-up-link"> Sign up for Groovify</Link>
+          Don't have an account?
+          <Link to="/account/signup" className="login-page__sign-up-link">
+            {" "}
+            Sign up for Groovify
+          </Link>
         </div>
       </form>
     </div>

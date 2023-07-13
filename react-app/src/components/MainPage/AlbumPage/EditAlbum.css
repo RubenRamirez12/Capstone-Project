@@ -1,0 +1,101 @@
+.edit-album__div {
+  width: 500px;
+  height: 400px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 8px;
+  margin: -10px;
+  padding: 20px;
+}
+
+.edit-album__title {
+  color: white;
+}
+
+.edit-album__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.edit-album__image {
+  width: 200px;
+  height: 200px;
+}
+
+.edit-album__img-label {
+    width: 200px;
+}
+
+.edit-album__img-label > input {
+    width: fit-content;
+    color: rgb(172, 172, 172);
+}
+
+.edit-album__info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+}
+
+.edit-album__name-input {
+    border: none;
+    color: rgb(190, 190, 190);
+    background-color: rgb(64, 64, 64);
+    padding-left: 10px;
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.edit-album__description-textarea {
+    border: none;
+    color: rgb(190, 190, 190);
+    background-color: rgb(64, 64, 64);
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 100px;
+    width: 200px;
+    border-radius: 5px;
+    resize: none;
+}
+
+.edit-album__submit-button {
+    border-radius: 50px;
+    border: none;
+    height: 30px;
+    width: 70px;
+    background-color: rgb(30,215,96);
+    align-self: center;
+}
+
+.edit-album__submit-button:hover {
+    background-color: rgb(34, 243, 107);
+}
+
+.edit-album__delete-button {
+    border-radius: 50px;
+    background-color: rgb(212, 0, 0);
+    border: none;
+    height: 30px;
+    font-size: 13px;
+    width: 120px;
+    align-self: center;
+    margin-top: 60px;
+}
+
+.edit-album__delete-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+
+.edit-album__error {
+    color: red;
+}
+
+.edit-album__section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

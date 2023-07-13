@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../../store/session";
@@ -31,7 +31,7 @@ export default function Navbar() {
 
   if (user) {
     return (
-      <>
+      <div className="nav-bar__logged-in-div">
         <button
           onClick={handleProfileClick}
           style={{ backgroundImage: `url(${user.profilePic})` }}
@@ -45,14 +45,14 @@ export default function Navbar() {
             </li>
           </ul>
         )}
-      </>
+      </div>
     );
   } else {
     return (
-      <>
-        <button onClick={handleNavSignup}>Sign up</button>
-        <button onClick={handleNavLogin}>Log in</button>
-      </>
+      <div className="nav-bar__no-user-buttons">
+        <button className="nav-bar__signup" onClick={handleNavSignup}>Sign up</button>
+        <button className="nav-bar__login" onClick={handleNavLogin}>Log in</button>
+      </div>
     );
   }
 }

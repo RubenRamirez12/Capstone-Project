@@ -1,8 +1,8 @@
 """create tables
 
-Revision ID: fb6f1b20c529
+Revision ID: de18f652bce4
 Revises:
-Create Date: 2023-07-11 13:44:12.815693
+Create Date: 2023-07-12 10:18:23.132908
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 # revision identifiers, used by Alembic.
-revision = 'fb6f1b20c529'
+revision = 'de18f652bce4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -59,9 +59,9 @@ def upgrade():
     op.create_table('songs',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('song_url', sa.String(length=500), nullable=False),
     sa.Column('song_length', sa.Integer(), nullable=False),
-    sa.Column('image_url', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
