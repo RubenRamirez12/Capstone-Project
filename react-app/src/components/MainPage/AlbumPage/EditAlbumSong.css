@@ -1,0 +1,57 @@
+.edit-song__div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 370px;
+  height: 220px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 8px;
+  margin: -10px;
+  color: white;
+  padding: 20px;
+}
+
+.edit-song__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.edit-song__name-input {
+  border: none;
+  color: rgb(221, 221, 221);
+  background-color: rgb(64, 64, 64);
+  padding-left: 10px;
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.edit-song__song-input {
+  width: 200px;
+}
+
+.edit-song__buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.edit-song__delete {
+  width: 80px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background-color: red;
+}
+
+.edit-song__submit {
+  width: 80px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(30,215,96);
+}

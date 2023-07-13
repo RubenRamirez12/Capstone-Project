@@ -1,4 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+import os
+
+SCHEMA = os.environ.get("SCHEMA")
 
 playlist_songs = db.Table(
     "playlist_songs",
@@ -15,3 +18,6 @@ playlist_songs = db.Table(
         primary_key=True,
     ),
 )
+
+if environment == "production":
+    playlist_songs.schema = SCHEMA
