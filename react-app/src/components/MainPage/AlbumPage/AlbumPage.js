@@ -7,6 +7,7 @@ import { thunkGetSingleAlbum } from "../../../store/album";
 import OpenModalButton from "../../OpenModalButton";
 import EditAlbum from "./EditAlbum";
 import CreateSong from "./CreateSong";
+import AlbumSongCard from "./AlbumSongCard";
 
 export default function AlbumPage() {
   const { albumId } = useParams();
@@ -62,11 +63,6 @@ export default function AlbumPage() {
                 buttonText={<i class="fa-solid fa-ellipsis" />}
                 buttonClass={"album-page__owner-options-button"}
               />
-              // <button
-              //   className="album-page__owner-options-button"
-              //   onClick={handleAlbumEdit}>
-              //   <i class="fa-solid fa-ellipsis" />
-              // </button>
             )}
           </div>
 
@@ -74,14 +70,19 @@ export default function AlbumPage() {
             <div className="album-page__header1">#</div>
             <div className="album-page__header2">Title</div>
             <div className="album-page__header3">
-              <i class="fa-solid fa-clock" />
+              {/* <i class="fa-solid fa-clock" /> */}
             </div>
           </div>
         </div>
 
         <ul className="album-page__song-list">
-          {album.songs.map((song) => {
-            return <h1>song was here</h1>;
+          {album.songs.map((song, index) => {
+            return (
+              <li key={index}>
+                {" "}
+                <AlbumSongCard song={song} index={index + 1}/>
+              </li>
+            );
           })}
         </ul>
       </div>

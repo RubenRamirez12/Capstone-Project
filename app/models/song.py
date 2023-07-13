@@ -26,14 +26,19 @@ class Song(db.Model):
     )
 
     def to_dict(self, timestamps=False):
+        album = self.album
+        artist = album.artist
         dct = {
             "id": self.id,
             "albumId": self.album_id,
+            "artistId": artist.id,
+            "artistName": artist.username,
             "name": self.name,
             "songUrl": self.song_url,
-            "songLength": self.song_length,
         }
 
         if timestamps:
             dct["createdAt"] = self.created_at
             dct["updatedAt"] = self.updated_at
+
+        return dct
