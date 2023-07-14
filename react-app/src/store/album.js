@@ -2,8 +2,9 @@
 const LOAD_ALBUMS = "album/LOAD_ALBUM";
 const LOAD_SINGLE_ALBUM = "album/LOAD_SINGLE_ALBUM";
 const EDIT_ALBUM = "album/EDIT_ALBUM";
-const CREATE_ALBUM_SONG = "album/CREATE_ALBUM_SONG"
-const EDIT_ALBUM_SONG = 'album/EDIT_ALBUM_SONG'
+const CREATE_ALBUM_SONG = "album/CREATE_ALBUM_SONG";
+const CREATE_NEW_ALBUM = "album/CREATE_NEW_ALBUM";
+const EDIT_ALBUM_SONG = "album/EDIT_ALBUM_SONG";
 
 //actions
 const actionLoadAlbums = (body) => ({
@@ -23,13 +24,18 @@ const actionEditAlbum = (body) => ({
 
 const actionCreateAlbumSong = (body) => ({
   type: CREATE_ALBUM_SONG,
-  payload: body
-})
+  payload: body,
+});
 
 const actionEditAlbumSong = (body) => ({
   type: EDIT_ALBUM_SONG,
-  payload: body
-})
+  payload: body,
+});
+
+const actionCreateNewAlbum = (body) => ({
+  type: CREATE_NEW_ALBUM,
+  payload: body,
+});
 
 //thunks
 export const thunkGetAllAlbums = () => async (dispatch) => {
@@ -67,57 +73,80 @@ export const thunkEditAlbum = (albumId, formData) => async (dispatch) => {
 
   if (res.ok) {
     const updated_album = await res.json();
-	  dispatch(actionEditAlbum(updated_album))
+    dispatch(actionEditAlbum(updated_album));
   } else {
     console.log("ERROR IN thunk edit album");
   }
-
 };
 
 export const thunkCreateAlbumSong = (albumId, formData) => async (dispatch) => {
   const res = await fetch(`/api/albums/${albumId}/song`, {
     method: "POST",
-    body: formData
-  })
+    body: formData,
+  });
 
   if (res.ok) {
-    const newSong = await res.json()
-    dispatch(actionCreateAlbumSong(newSong))
+    const newSong = await res.json();
+    dispatch(actionCreateAlbumSong(newSong));
   } else {
-    console.log("ERROR IN THUNK CREATE ALBUM SONG")
+    console.log("ERROR IN THUNK CREATE ALBUM SONG");
   }
-}
+};
 
 export const thunkEditAlbumSong = (songId, formData) => async (dispatch) => {
   const res = await fetch(`/api/songs/edit/${songId}`, {
     method: "PUT",
+    body: formData,
+  });
+
+  if (res.ok) {
+    const editedSong = await res.json();
+
+    return dispatch(actionEditAlbumSong(editedSong));
+  } else {
+    const error = await res.json();
+    console.log("ERROR IN THUNK EDIT ALBUM SONG", error);
+  }
+};
+
+export const thunkCreateNewAlbum = (formData) => async (dispatch) => {
+  const res = await fetch('/api/albums/newAlbum', {
+    method: "POST",
     body: formData
   })
 
   if (res.ok) {
-    const editedSong = await res.json()
-
-    return dispatch(actionEditAlbumSong(editedSong))
+    const newAlbum = await res.json()
+    return dispatch(actionCreateNewAlbum(newAlbum))
   } else {
-    const error = await res.json()
-    console.log("ERROR IN THUNK EDIT ALBUM SONG", error)
+    console.log("ERROR IN THUNK CREATE NEW ALBUM!")
   }
-}
+};
 
 const initialState = { albums: {}, singleAlbum: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case EDIT_ALBUM_SONG:
-      const edited_song = action.payload
-      const songs = state.singleAlbum.songs.filter(song => edited_song.id !== song.id)
-      songs.push(edited_song)
+      const edited_song = action.payload;
+      const songs = state.singleAlbum.songs.filter(
+        (song) => edited_song.id !== song.id
+      );
+      songs.push(edited_song);
 
-      return { ...state, singleAlbum: { ...state.singleAlbum, songs: songs}}
-
+      return { ...state, singleAlbum: { ...state.singleAlbum, songs: songs } };
 
     case CREATE_ALBUM_SONG:
-      return { ...state, singleAlbum: { ...state.singleAlbum, songs: [ ...state.singleAlbum.songs, action.payload]}}
+      return {
+        ...state,
+        singleAlbum: {
+          ...state.singleAlbum,
+          songs: [...state.singleAlbum.songs, action.payload],
+        },
+      };
+
+    case CREATE_NEW_ALBUM:
+      return { ...state, singleAlbum: action.payload };
 
     case LOAD_ALBUMS:
       return { ...state, albums: action.payload };
@@ -126,7 +155,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, singleAlbum: action.payload };
 
     case EDIT_ALBUM:
-      return { ...state, singleAlbum: { ...action.payload } }
+      return { ...state, singleAlbum: { ...action.payload } };
 
     default:
       return state;
