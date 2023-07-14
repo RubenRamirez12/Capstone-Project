@@ -24,6 +24,10 @@ export default function EditAlbumSong({ currentSong }) {
     closeModal()
   };
 
+  const handleAlbumSongDelete = async (e) => {
+    await dispatch(thunkDeleteAlbumSong(currentSong.id))
+  }
+
   return (
     <div className="edit-song__div">
       <h1>Edit Song</h1>
@@ -47,7 +51,7 @@ export default function EditAlbumSong({ currentSong }) {
         />
         <div className="edit-song__buttons-div">
           <button className="edit-song__submit" type="submit">Submit</button>
-          <button className="edit-song__delete" onClick={() => alert("Feature coming soon!")}>Delete</button>
+          <button className="edit-song__delete" onClick={handleAlbumSongDelete}>Delete</button>
         </div>
       </form>
     </div>

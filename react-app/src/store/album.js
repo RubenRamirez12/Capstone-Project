@@ -129,7 +129,9 @@ export const thunkCreateNewAlbum = (formData) => async (dispatch) => {
 };
 
 export const thunkDeleteAlbum = (albumId) => async (dispatch) => {
-  const res = await fetch(`api/albums/delete/${albumId}`)
+  const res = await fetch(`/api/albums/delete/${albumId}`, {
+    method: "DELETE"
+  })
 
   if (res.ok) {
     return dispatch(actionDeleteAlbum())
@@ -137,6 +139,10 @@ export const thunkDeleteAlbum = (albumId) => async (dispatch) => {
     const error = await res.json()
     console.log("ERROR IN DELETE ALBUM THUNK!", error)
   }
+}
+
+export const thunkDeleteAlbumSong = (songId) => async (dispatch) => {
+
 }
 
 const initialState = { albums: {}, singleAlbum: {} };
