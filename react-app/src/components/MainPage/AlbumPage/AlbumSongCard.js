@@ -1,12 +1,18 @@
 import { useState } from "react";
 import "./AlbumSongCard.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
 import EditAlbumSong from "./EditAlbumSong";
+import { actionPlaySong } from "../../../store/song";
 
 export default function AlbumSongCard({ song, index }) {
   const [hovered, setHovered] = useState(false);
   const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch()
+
+  const handlePlaySong = async () => {
+    dispatch(actionPlaySong(song))
+  }
 
   return (
     <div
@@ -17,7 +23,7 @@ export default function AlbumSongCard({ song, index }) {
         {!hovered ? (
           index
         ) : (
-          <button className="album-song-card__play-song-button">
+          <button className="album-song-card__play-song-button" onClick={handlePlaySong}>
             <i className="fa-solid fa-play" />
           </button>
         )}{" "}

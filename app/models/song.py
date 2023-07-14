@@ -32,6 +32,7 @@ class Song(db.Model):
             "id": self.id,
             "albumId": self.album_id,
             "artistId": artist.id,
+            "albumImg": album.image_url,
             "artistName": artist.username,
             "name": self.name,
             "songUrl": self.song_url,

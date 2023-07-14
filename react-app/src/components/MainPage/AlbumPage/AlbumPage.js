@@ -1,7 +1,7 @@
 import "./AlbumPage.css";
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetSingleAlbum } from "../../../store/album";
 import OpenModalButton from "../../OpenModalButton";
@@ -18,7 +18,6 @@ export default function AlbumPage() {
   useEffect(() => {
     dispatch(thunkGetSingleAlbum(albumId));
   }, [dispatch, albumId]);
-
 
   if (Object.values(album).length === 0) {
     return <></>;
@@ -94,11 +93,13 @@ export default function AlbumPage() {
         </ul>
       </div>
       {user && user.id === album.artistId && (
-        <OpenModalButton
-          modalComponent={<CreateSong album={album} />}
-          buttonText={"add a Song"}
-          buttonClass={"album-page__create-song-button"}
-        />
+        <div className="album-page__create-song-div">
+          <OpenModalButton
+            modalComponent={<CreateSong album={album} />}
+            buttonText={"add a Song"}
+            buttonClass={"album-page__create-song-button"}
+          />
+        </div>
       )}
     </div>
   );
