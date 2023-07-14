@@ -5,6 +5,7 @@ const EDIT_ALBUM = "album/EDIT_ALBUM";
 const CREATE_ALBUM_SONG = "album/CREATE_ALBUM_SONG";
 const CREATE_NEW_ALBUM = "album/CREATE_NEW_ALBUM";
 const EDIT_ALBUM_SONG = "album/EDIT_ALBUM_SONG";
+const DELETE_ALBUM = 'album/DELETE_ALBUM'
 
 //actions
 const actionLoadAlbums = (body) => ({
@@ -36,6 +37,10 @@ const actionCreateNewAlbum = (body) => ({
   type: CREATE_NEW_ALBUM,
   payload: body,
 });
+
+const actionDeleteAlbum = () => ({
+  type: DELETE_ALBUM,
+})
 
 //thunks
 export const thunkGetAllAlbums = () => async (dispatch) => {
@@ -123,6 +128,17 @@ export const thunkCreateNewAlbum = (formData) => async (dispatch) => {
   }
 };
 
+export const thunkDeleteAlbum = (albumId) => async (dispatch) => {
+  const res = await fetch(`api/albums/delete/${albumId}`)
+
+  if (res.ok) {
+    return dispatch(actionDeleteAlbum())
+  } else {
+    const error = await res.json()
+    console.log("ERROR IN DELETE ALBUM THUNK!", error)
+  }
+}
+
 const initialState = { albums: {}, singleAlbum: {} };
 
 export default function reducer(state = initialState, action) {
@@ -156,6 +172,9 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_ALBUM:
       return { ...state, singleAlbum: { ...action.payload } };
+
+    case DELETE_ALBUM:
+      return { ...state, singleAlbum: {} }
 
     default:
       return state;

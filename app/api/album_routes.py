@@ -18,11 +18,31 @@ def get_all_playlists():
     return {"albums": all_albums}
 
 
+
 @album_routes.route("/getOne/<int:albumId>")
 def get_one_album(albumId):
     album = Album.query.get(albumId)
 
     return {"album": album.to_dict_single()}
+
+
+
+@album_routes.route("/delete/<int:albumId>")
+@login_required
+def delete_album(albumId):
+    print("_____________________________________________")
+    print("Hits Delete Route")
+    print("_____________________________________________")
+    album = Album.query.get(albumId)
+
+    # if album is None or album.artist_id != current_user.id:
+    #     return {"errors": "Album not found"}, 404
+
+    # db.session.delete(album)
+    # db.session.commit()
+
+    return { "message" : "Deleted Successfully" }
+
 
 
 @album_routes.route("/edit/<int:albumId>", methods=["PUT"])

@@ -93,7 +93,7 @@ export default function SoundBar() {
 
       <div className="sound-bar__audio-bar">
         {currentSong && (
-          <audio ref={audioRef} src={currentSong.songUrl} controls />
+          <audio ref={audioRef} src={currentSong.songUrl} />
         )}
       </div>
     </div>

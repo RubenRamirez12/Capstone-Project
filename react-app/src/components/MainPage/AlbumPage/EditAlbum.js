@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./EditAlbum.css";
 import { useDispatch } from "react-redux";
-import { thunkEditAlbum } from "../../../store/album";
+import { thunkDeleteAlbum, thunkEditAlbum } from "../../../store/album";
 import { useModal } from "../../../context/Modal";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function EditAlbum({ album }) {
   const dispatch = useDispatch();
   const [albumImg, setAlbumImg] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(album.imageUrl);
+  const history = useHistory()
   const [albumName, setAlbumName] = useState(album.name);
   const [albumDescription, setAlbumDescription] = useState(album.description);
   const { closeModal } = useModal();
@@ -33,6 +35,11 @@ export default function EditAlbum({ album }) {
     setDisplayUrl(URL.createObjectURL(image));
   };
 
+  const handleAlbumDelete = async (e) => {
+    await dispatch(thunkDeleteAlbum(album.id))
+    history.push('/main')
+  }
+
   return (
     <div className="edit-album__div">
       <h1 className="edit-album__title">Edit Album details</h1>
@@ -49,7 +56,7 @@ export default function EditAlbum({ album }) {
           />
           <button
             className="edit-album__delete-button"
-            onClick={() => alert("Feature Coming Soon")}>
+            onClick={handleAlbumDelete}>
             DELETE ALBUM
           </button>
         </label>
