@@ -7,6 +7,8 @@ import {
 } from "../../../store/playlist";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../../OpenModalButton";
+import CreateAlbum from "./CreateAlbum";
 
 export default function Sidebar() {
   const user = useSelector((state) => state.session.user);
@@ -27,7 +29,7 @@ export default function Sidebar() {
     if (user) {
       setDroppedDown(false);
       const data = await dispatch(thunkCreatePlaylist());
-      let newId = Object.keys(data.payload)[0]
+      let newId = Object.keys(data.payload)[0];
       history.push(`/main/playlists/${newId}`);
     } else {
       return history.push("/account/login");
@@ -70,10 +72,16 @@ export default function Sidebar() {
               <i className="fa-solid fa-music" />
               Create a new playlist
             </button>
-            <button className="side__dropdown-item" onClick={handleNewAlbum}>
-              <i className="fa-solid fa-compact-disc" />
-              Create a new album
-            </button>
+            <OpenModalButton
+              modalComponent={<CreateAlbum />}
+              buttonClass={"side__dropdown-item"}
+              buttonText={
+                <>
+                  <i className="fa-solid fa-compact-disc" />
+                  Create a new album
+                </>
+              }
+            />
           </div>
         )}
 

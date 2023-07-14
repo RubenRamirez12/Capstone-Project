@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from ..models import User, Album, db, Song
-from ..forms import EditAlbumForm, CreateSongForm
+from ..forms import EditAlbumForm, CreateSongForm, CreateAlbumForm
 from .aws_helpers import get_unique_filename, upload_file_to_s3
 from .auth_routes import validation_errors_to_error_messages
 
@@ -55,6 +55,37 @@ def edit_album(albumId):
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
+@album_routes.route('/newAlbum', methods=["POST"])
+@login_required
+def create_new_album():
+    form = CreateAlbumForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    form.data["user_id"] = current_user.id
+    if form.validate_on_submit():
+
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return {ERROR: "HERE IS ERROR"}
+
+        new_album = Album(
+            artist_id = current_user.id,
+            name = form.data["name"],
+            description = form.data["description"],
+            image_url = upload["url"],
+            single = False
+        )
+
+        db.session.add(new_album)
+        db.session.commit()
+        return new_album.to_dict_single()
+
+    print("_______________________________________________________________________")
+    print(validation_errors_to_error_messages(form.errors))
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @album_routes.route("/<int:albumId>/song", methods=["POST"])
 @login_required
