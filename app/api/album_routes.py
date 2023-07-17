@@ -18,11 +18,28 @@ def get_all_playlists():
     return {"albums": all_albums}
 
 
+
 @album_routes.route("/getOne/<int:albumId>")
 def get_one_album(albumId):
     album = Album.query.get(albumId)
 
     return {"album": album.to_dict_single()}
+
+
+
+@album_routes.route("/delete/<int:albumId>", methods=["DELETE"])
+@login_required
+def delete_album(albumId):
+    album = Album.query.get(albumId)
+
+    if album is None or album.artist_id != current_user.id:
+        return {"errors": "Album not found"}, 404
+
+    db.session.delete(album)
+    db.session.commit()
+
+    return { "message" : "Deleted Successfully" }
+
 
 
 @album_routes.route("/edit/<int:albumId>", methods=["PUT"])
@@ -83,8 +100,6 @@ def create_new_album():
         db.session.commit()
         return new_album.to_dict_single()
 
-    print("_______________________________________________________________________")
-    print(validation_errors_to_error_messages(form.errors))
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @album_routes.route("/<int:albumId>/song", methods=["POST"])

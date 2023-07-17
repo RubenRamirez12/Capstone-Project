@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action) {
     case NEXT_SONG:
       let songs = state.songs;
       songs.shift();
-      return { songs: songs };
+      return { songs: [ ...songs ] };
 
     default:
       return state;

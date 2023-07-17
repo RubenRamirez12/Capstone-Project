@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 370px;
-  height: 220px;
+  height: 270px;
   background-color: rgb(34, 34, 34);
   border-radius: 8px;
   margin: -10px;
@@ -17,6 +17,7 @@
   align-items: center;
   gap: 20px;
   margin-top: 15px;
+  height: 90%;
 }
 
 .edit-song__name-input {
@@ -38,15 +39,9 @@
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
+  justify-content: center;
 }
 
-.edit-song__delete {
-  width: 80px;
-  height: 30px;
-  border-radius: 30px;
-  border: none;
-  background-color: red;
-}
 
 .edit-song__submit {
   width: 80px;
@@ -54,4 +49,12 @@
   border-radius: 30px;
   border: none;
   background-color: rgb(30,215,96);
+}
+
+.edit-song__delete {
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: red;
 }

@@ -7,6 +7,22 @@ from .auth_routes import validation_errors_to_error_messages
 
 song_routes = Blueprint('songs', __name__)
 
+@song_routes.route('/delete/<int:songId>', methods=["DELETE"])
+@login_required
+def delete_song(songId):
+    selected_song = Song.query.get(songId)
+
+    if selected_song.to_dict()["artistId"] != current_user.id:
+        return {"errors": "Song not found"}, 404
+
+    db.session.delete(selected_song)
+    db.session.commit()
+
+    return { "message" : "Deleted Successfully" }
+
+
+
+
 @song_routes.route('/edit/<int:songId>', methods=["PUT"])
 @login_required
 def edit_song(songId):

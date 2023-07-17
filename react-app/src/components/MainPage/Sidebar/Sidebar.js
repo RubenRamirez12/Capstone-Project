@@ -36,10 +36,6 @@ export default function Sidebar() {
     }
   };
 
-  const handleNewAlbum = async () => {
-    setDroppedDown(false);
-  };
-
   return (
     <div className="sidebar__div">
       <div className="sidebar__nav">
@@ -73,7 +69,7 @@ export default function Sidebar() {
               Create a new playlist
             </button>
             <OpenModalButton
-              modalComponent={<CreateAlbum />}
+              modalComponent={<CreateAlbum setDroppedDown={setDroppedDown}/>}
               buttonClass={"side__dropdown-item"}
               buttonText={
                 <>
