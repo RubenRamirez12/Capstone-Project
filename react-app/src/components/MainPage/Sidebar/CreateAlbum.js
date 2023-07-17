@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./CreateAlbum.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Redirect,
   useHistory,
@@ -8,7 +8,7 @@ import {
 import { useModal } from "../../../context/Modal";
 import { thunkCreateNewAlbum } from "../../../store/album";
 
-export default function CreateAlbum() {
+export default function CreateAlbum({ setDroppedDown }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [displayUrl, setDisplayUrl] = useState(undefined);
@@ -18,6 +18,9 @@ export default function CreateAlbum() {
   const { closeModal } = useModal();
   const history = useHistory();
 
+  useEffect(() => {
+    setDroppedDown(false)
+  })
   if (!user) {
     closeModal();
     return <Redirect to="/account/login" />;
