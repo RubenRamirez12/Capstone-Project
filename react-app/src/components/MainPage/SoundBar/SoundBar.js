@@ -19,7 +19,6 @@ export default function SoundBar() {
     setCurrentSong(songs[0]);
     if (songs.length > 0) {
       setPlaying(true);
-      dispatch(actionNextSong())
     }
   }, [songs]);
 
@@ -31,25 +30,32 @@ export default function SoundBar() {
   }, [currentSong]);
 
   useEffect(() => {
-    if (songDuration > 0 && songProgress === songDuration) {
-      if (songs.length === 0) {
+    if (songProgress === songDuration) {
+
+      if (songs.length > 1) {
+        dispatch(actionNextSong())
         setPlaying(false);
+        setCurrentSong(null);
+        setSongProgress(0);
+      }
+      if (songs.length === 1) {
         setCurrentSong(null)
         setSongProgress(0);
-        setSongDuration(0);
       }
     }
   }, [dispatch, songProgress, songDuration, songs.length]);
 
   useEffect(() => {
     if (audioRef.current) {
+      audioRef.current.src = currentSong?.songUrl
+      audioRef.current.load()
       if (playing) {
         audioRef.current.play();
       } else {
         audioRef.current.pause();
       }
     }
-  }, [playing]);
+  }, [currentSong, playing]);
 
   const handleProgress = (e) => {
     const progress = parseInt(e.target.value);
