@@ -48,7 +48,12 @@ export const login = (credential, password) => async (dispatch) => {
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			return data.errors;
+			let errorObj = {}
+			data.errors.forEach(currentError => {
+				let [errorName, errorMessage] = currentError.split(' : ')
+				errorObj[errorName] = errorMessage
+			});
+			return errorObj;
 		}
 	} else {
 		return ["An error occurred. Please try again."];
@@ -88,7 +93,12 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			return data.errors;
+			let errorObj = {}
+			data.errors.forEach(currentError => {
+				let [errorName, errorMessage] = currentError.split(' : ')
+				errorObj[errorName] = errorMessage
+			});
+			return errorObj;
 		}
 	} else {
 		return ["An error occurred. Please try again."];
