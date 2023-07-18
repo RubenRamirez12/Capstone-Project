@@ -28,8 +28,9 @@ export default function Sidebar() {
   const createPlaylist = async () => {
     if (user) {
       setDroppedDown(false);
-      const data = await dispatch(thunkCreatePlaylist());
-      let newId = Object.keys(data.payload)[0];
+      alert("Feature Coming Soon!")
+      // const data = await dispatch(thunkCreatePlaylist());
+      // let newId = Object.keys(data.payload)[0];
       // history.push(`/main/playlists/${newId}`);
     } else {
       return history.push("/account/login");
