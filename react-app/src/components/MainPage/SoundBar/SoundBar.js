@@ -132,6 +132,7 @@ export default function SoundBar() {
             onTimeUpdate={() => setSongProgress(audioRef.current.currentTime)}
             onLoadedMetadata={() => setSongDuration(audioRef.current.duration)}
             volume={volume}
+            onEnded={handleNextButton}
           />
         )}
         <input

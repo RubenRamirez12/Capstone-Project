@@ -22,7 +22,7 @@
 .sound-bar__range {
     width: 60%;
     height: 4px;
-    background-color: rgb(34, 34, 34)
+    background-color: rgb(34, 34, 34);
 }
 
 .sound-bar__song-options {

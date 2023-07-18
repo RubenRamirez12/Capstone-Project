@@ -66,7 +66,8 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            profile_pic = "https://groovify-bucket.s3.us-west-1.amazonaws.com/icon-user.png"
         )
         db.session.add(user)
         db.session.commit()
