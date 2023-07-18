@@ -221,7 +221,7 @@ def seed_songs():
     song_LilUziVert_2 = Song(
         album_id = 2,
         name = "Lo Mein",
-        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Lo+Mein.mp3s"
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Lo+Mein.mp3"
     )
     song_LilUziVert_3 = Song(
         album_id = 2,

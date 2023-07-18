@@ -12,7 +12,7 @@ export default function SignupPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -24,25 +24,21 @@ export default function SignupPage() {
         setErrors(data);
       }
     } else {
-      setErrors([
-        "Confirm Password field must be the same as the Password field",
-      ]);
+      setErrors({
+        confirmPassword: "Confirm Password field must be the same as the Password field",
+      });
     }
   };
+
+  console.log("errors", errors);
 
   return (
     <div className="signup__div">
       <form onSubmit={handleSubmit} className="signup__form">
         <div className="signup__top">
-          <img src={blackWhiteLogo} className="signup__logo" alt=""/> Groovify
+          <img src={blackWhiteLogo} className="signup__logo" alt="" /> Groovify
         </div>
         <h1 className="signup__h1">Sign up for free to start listening.</h1>
-
-        <ul>
-          {errors.map((error, idx) => (
-            <li className="signup-error" key={idx}>{error}</li>
-          ))}
-        </ul>
         <h3 className="signup__h3">Sign up with your email address</h3>
         <label className="signup__label">
           What's your email?
@@ -54,7 +50,9 @@ export default function SignupPage() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {errors.email && <span className="signup-error">{errors.email}</span>}
         </label>
+
         <label className="signup__label">
           What should we call you?
           <input
@@ -68,6 +66,9 @@ export default function SignupPage() {
           />
           {username.length >= 40 && (
             <span className="signup-error">Max character limit reached</span>
+          )}
+          {errors.username && (
+            <span className="signup-error">{errors.username}</span>
           )}
         </label>
         <label className="signup__label">
@@ -84,6 +85,9 @@ export default function SignupPage() {
           {password.length >= 60 && (
             <span className="signup-error">Max character limit reached</span>
           )}
+          {errors.password && (
+            <span className="signup-error">{errors.password}</span>
+          )}
         </label>
         <label className="signup__label">
           Confirm your Password
@@ -98,6 +102,9 @@ export default function SignupPage() {
           />
           {confirmPassword.length >= 60 && (
             <span className="signup-error">Max character limit reached</span>
+          )}
+          {errors.confirmPassword && (
+            <span className="signup-error">{errors.confirmPassword}</span>
           )}
         </label>
         <button type="submit" className="signup__submit">

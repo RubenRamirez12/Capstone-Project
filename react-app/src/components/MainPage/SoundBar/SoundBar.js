@@ -7,65 +7,52 @@ export default function SoundBar() {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.song.songs);
 
-  const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [currentSong, setCurrentSong] = useState(null);
   const [playing, setPlaying] = useState(false);
   const [songProgress, setSongProgress] = useState(0);
-  const [songDuration, setSongDuration] = useState(0);
+  const [songDuration, setSongDuration] = useState(1);
   const [volume, setVolume] = useState(0.5);
 
   const audioRef = useRef();
 
+  // console.log("THE CURRENT SONG!", currentSong)
+
+  //sets up new song
   useEffect(() => {
     setCurrentSong(songs[0]);
-    if (songs.length > 0) {
-      setPlaying(true);
-    }
   }, [songs]);
 
+  //when new currentSong ^^
   useEffect(() => {
-    if (currentSong === undefined) {
-      setSongDuration(0);
-      setSongProgress(0);
+    if (currentSong) {
+      audioRef.current.src = currentSong.songUrl;
+      audioRef.current.load();
+      setPlaying(true);
+      audioRef.current.play()
     }
   }, [currentSong]);
 
-  useEffect(() => {
-    if (songProgress === songDuration) {
-
-      if (songs.length > 1) {
-        dispatch(actionNextSong())
-        setPlaying(false);
-        setCurrentSong(null);
-        setSongProgress(0);
-      }
-      if (songs.length === 1) {
-        setCurrentSong(null)
-        setSongProgress(0);
-      }
-    }
-  }, [dispatch, songProgress, songDuration, songs.length]);
-
+  //if button is toggled
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.src = currentSong?.songUrl
-      audioRef.current.load()
       if (playing) {
         audioRef.current.play();
       } else {
         audioRef.current.pause();
       }
     }
-  }, [currentSong, playing]);
+  }, [audioRef, playing]);
 
   const handleProgress = (e) => {
     const progress = parseInt(e.target.value);
     setSongProgress(progress);
     audioRef.current.currentTime = progress;
 
-    if (progress === songDuration && songs.length === 0) {
+    if (progress === songDuration && songs.length <= 1) {
       setPlaying(false);
       setSongProgress(0);
       setSongDuration(0);
+      audioRef.current.pause();
     }
   };
 
@@ -73,6 +60,15 @@ export default function SoundBar() {
     const volumeVal = parseFloat(e.target.value);
     setVolume(volumeVal);
     audioRef.current.volume = volumeVal;
+  };
+
+  const handleNextButton = () => {
+    dispatch(actionNextSong());
+    setSongProgress(0)
+  };
+
+  const handlePrevButton = () => {
+    audioRef.current.currentTime = 0;
   };
 
   return (
@@ -96,7 +92,7 @@ export default function SoundBar() {
           <button
             className="sound-bar__left-button"
             disabled={!currentSong}
-            onClick={() => alert("Feature coming soon")}>
+            onClick={handlePrevButton}>
             <i className="fa-solid fa-backward-step"></i>
           </button>
           <button
@@ -112,7 +108,7 @@ export default function SoundBar() {
           <button
             className="sound-bar__right-button"
             disabled={!currentSong}
-            onClick={() => alert("Feature coming soon")}>
+            onClick={handleNextButton}>
             <i className="fa-solid fa-forward-step"></i>
           </button>
         </div>

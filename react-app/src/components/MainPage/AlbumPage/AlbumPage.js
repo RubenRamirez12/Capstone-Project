@@ -8,6 +8,7 @@ import OpenModalButton from "../../OpenModalButton";
 import EditAlbum from "./EditAlbum";
 import CreateSong from "./CreateSong";
 import AlbumSongCard from "./AlbumSongCard";
+import { actionPlayAlbum, actionPlaySong } from "../../../store/song";
 
 export default function AlbumPage() {
   const { albumId } = useParams();
@@ -18,6 +19,10 @@ export default function AlbumPage() {
   useEffect(() => {
     dispatch(thunkGetSingleAlbum(albumId));
   }, [dispatch, albumId]);
+
+  const handlePlayAlbum = () => {
+    dispatch(actionPlayAlbum(album.songs));
+  };
 
   if (Object.values(album).length === 0) {
     return <></>;
@@ -54,7 +59,9 @@ export default function AlbumPage() {
       <div className="album-page__main-section">
         <div className="album-page__main-top">
           <div className="album-page__main-buttons">
-            <button className="album-page__green-play-button">
+            <button
+              className="album-page__green-play-button"
+              onClick={handlePlayAlbum}>
               <i className="fa-solid fa-play" />
             </button>
             {user && user.id === album.artistId && (
