@@ -113,3 +113,7 @@
 .login-page__sign-up-link:hover {
     color: rgb(43,213,88);
 }
+
+.login-error {
+    color:red;
+}

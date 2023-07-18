@@ -35,14 +35,7 @@ export default function Navbar() {
         <button
           onClick={handleProfileClick}
           className="nav-bar__profile-button">
-          <img
-          className="nav-bar__profile-image"
-            src={
-              user.profilePic
-                ? user.profilePic
-                : "https://groovify-bucket.s3.us-west-1.amazonaws.com/icon-user.png"
-            }
-          />
+          <img className="nav-bar__profile-image" src={user.profilePic} />
         </button>
         {dropped && (
           <ul className="nav-bar__dropdown-menu">
