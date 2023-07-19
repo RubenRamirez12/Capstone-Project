@@ -28,7 +28,7 @@ export default function AlbumSongCard({ playSpecificSong, song, index }) {
       </div>
 
       <div className="album-song-card__song-info">
-        <div className={`album-song-card__name ${currentSong.id == song.id ? "album-song-playing" : ""}`}>{song.name}</div>
+        <div className={`album-song-card__name ${currentSong?.id == song.id ? "album-song-playing" : ""}`}>{song.name}</div>
         <div className="album-song-card__artist">{song.artistName}</div>
       </div>
 
