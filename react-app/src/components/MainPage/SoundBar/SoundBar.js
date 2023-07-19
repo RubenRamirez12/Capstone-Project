@@ -28,7 +28,7 @@ export default function SoundBar() {
       audioRef.current.src = currentSong.songUrl;
       audioRef.current.load();
       setPlaying(true);
-      audioRef.current.play()
+      audioRef.current.play();
     }
   }, [currentSong]);
 
@@ -67,7 +67,11 @@ export default function SoundBar() {
   };
 
   const handlePrevButton = () => {
-    dispatch(actionPrevSong());
+    if (songProgress > 2) {
+      audioRef.current.currentTime = 0
+    } else {
+      dispatch(actionPrevSong());
+    }
   };
 
   return (
