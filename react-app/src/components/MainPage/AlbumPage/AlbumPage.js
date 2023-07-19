@@ -8,7 +8,7 @@ import OpenModalButton from "../../OpenModalButton";
 import EditAlbum from "./EditAlbum";
 import CreateSong from "./CreateSong";
 import AlbumSongCard from "./AlbumSongCard";
-import { actionPlayAlbum, actionPlaySong } from "../../../store/song";
+import { actionPlayAlbum, actionPlaySongs } from "../../../store/song";
 
 export default function AlbumPage() {
   const { albumId } = useParams();
@@ -27,6 +27,19 @@ export default function AlbumPage() {
   if (Object.values(album).length === 0) {
     return <></>;
   }
+
+  const playSpecificSong = (index) => {
+    const sorted_songs = album.songs.sort((a, b) => {
+      const createdAtA = new Date(a.createdAt).getTime();
+      const createdAtB = new Date(b.createdAt).getTime();
+      return createdAtA - createdAtB;
+    });
+    let start = sorted_songs.slice(0, index)
+    let end = sorted_songs.slice(index)
+
+    let playlist = end.concat(start);
+    dispatch(actionPlaySongs(playlist))
+  };
 
   return (
     <div className="album-page__div">
@@ -93,7 +106,11 @@ export default function AlbumPage() {
               return (
                 <li key={index}>
                   {" "}
-                  <AlbumSongCard song={song} index={index + 1} />
+                  <AlbumSongCard
+                    playSpecificSong={playSpecificSong}
+                    song={song}
+                    index={index + 1}
+                  />
                 </li>
               );
             })}
