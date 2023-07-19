@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./SoundBar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { actionNextSong } from "../../../store/song";
+import { actionNextSong, actionPrevSong } from "../../../store/song";
 
 export default function SoundBar() {
   const dispatch = useDispatch();
@@ -64,11 +64,10 @@ export default function SoundBar() {
 
   const handleNextButton = () => {
     dispatch(actionNextSong());
-    setSongProgress(0)
   };
 
   const handlePrevButton = () => {
-    audioRef.current.currentTime = 0;
+    dispatch(actionPrevSong());
   };
 
   return (
