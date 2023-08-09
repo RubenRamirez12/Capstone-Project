@@ -28,10 +28,9 @@ export default function Sidebar() {
   const createPlaylist = async () => {
     if (user) {
       setDroppedDown(false);
-      alert("Feature Coming Soon!")
-      // const data = await dispatch(thunkCreatePlaylist());
-      // let newId = Object.keys(data.payload)[0];
-      // history.push(`/main/playlists/${newId}`);
+      const data = await dispatch(thunkCreatePlaylist());
+      let newId = Object.keys(data.payload)[0];
+      history.push(`/main/playlists/${newId}`);
     } else {
       return history.push("/account/login");
     }
@@ -70,7 +69,7 @@ export default function Sidebar() {
               Create a new playlist
             </button>
             <OpenModalButton
-              modalComponent={<CreateAlbum setDroppedDown={setDroppedDown}/>}
+              modalComponent={<CreateAlbum setDroppedDown={setDroppedDown} />}
               buttonClass={"side__dropdown-item"}
               buttonText={
                 <>
@@ -99,9 +98,9 @@ export default function Sidebar() {
             {user &&
               playlists.map((playlist) => {
                 return (
-                  <li key={playlist.id} className="sidebar__playlist-entry" onClick={() => alert("Feature coming soon!")}>
+                  <li key={playlist.id} className="sidebar__playlist-entry">
                     <Link
-                      // to={`/main/playlists/${playlist.id}`}
+                      to={`/main/playlists/${playlist.id}`}
                       className="sidebar__playlist-link">
                       <img
                         className="sidebar__playlist-image"

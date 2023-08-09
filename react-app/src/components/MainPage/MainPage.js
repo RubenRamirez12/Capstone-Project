@@ -21,8 +21,7 @@ export default function MainPage() {
           </Route>
 
           <Route path="/main/playlists/:playlistId">
-            <Redirect to="/main" />
-            {/* <PlaylistPage /> */}
+            <PlaylistPage />
           </Route>
 
           <Route path="/main/albums/:albumId">

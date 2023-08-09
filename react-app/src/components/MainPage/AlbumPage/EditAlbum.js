@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./EditAlbum.css";
 import { useDispatch } from "react-redux";
 import { thunkDeleteAlbum, thunkEditAlbum } from "../../../store/album";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "./EditAlbum.css";
 
 export default function EditAlbum({ album }) {
   const dispatch = useDispatch();

@@ -7,8 +7,13 @@ const CREATE_NEW_ALBUM = "album/CREATE_NEW_ALBUM";
 const EDIT_ALBUM_SONG = "album/EDIT_ALBUM_SONG";
 const DELETE_ALBUM = 'album/DELETE_ALBUM'
 const DELETE_ALBUM_SONG = 'album/DELETE_ALBUM_SONG'
+const CLEAR_ALBUM = "album/CLEAR_ALBUM";
 
 //actions
+export const actionClearAlbum = () => ({
+  type: CLEAR_ALBUM
+})
+
 const actionLoadAlbums = (body) => ({
   type: LOAD_ALBUMS,
   payload: body,
@@ -204,6 +209,8 @@ export default function reducer(state = initialState, action) {
 
       return { ...state, singleAlbum: { ...state.singleAlbum, songs: updatedSongs}}
 
+    case CLEAR_ALBUM:
+      return { ...state, singleAlbum: {} }
     default:
       return state;
   }

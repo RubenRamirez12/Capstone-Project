@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetSingleAlbum } from "../../../store/album";
+import { thunkGetSingleAlbum, actionClearAlbum} from "../../../store/album";
 import OpenModalButton from "../../OpenModalButton";
 import EditAlbum from "./EditAlbum";
 import CreateSong from "./CreateSong";
@@ -18,6 +18,7 @@ export default function AlbumPage() {
 
   useEffect(() => {
     dispatch(thunkGetSingleAlbum(albumId));
+    return () => dispatch(actionClearAlbum());
   }, [dispatch, albumId]);
 
   const handlePlayAlbum = () => {
@@ -25,7 +26,7 @@ export default function AlbumPage() {
   };
 
   if (Object.values(album).length === 0) {
-    return <></>;
+    return <div className="album-page__div" />;
   }
 
   const playSpecificSong = (index) => {
@@ -34,11 +35,11 @@ export default function AlbumPage() {
       const createdAtB = new Date(b.createdAt).getTime();
       return createdAtA - createdAtB;
     });
-    let start = sorted_songs.slice(0, index)
-    let end = sorted_songs.slice(index)
+    let start = sorted_songs.slice(0, index);
+    let end = sorted_songs.slice(index);
 
     let playlist = end.concat(start);
-    dispatch(actionPlaySongs(playlist))
+    dispatch(actionPlaySongs(playlist));
   };
 
   return (
