@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import "./PlaylistPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Navbar from "../Navbar/Navbar";
 import { thunkGetSinglePlaylist, actionClearPlaylist } from "../../../store/playlist";
-import { actionPlaySongs } from "../../../store/song";
+import { actionPlayPlaylist, actionPlaySongs } from "../../../store/song";
+import Navbar from "../Navbar/Navbar";
 import PlaylistSongCard from "./PlaylistSongCard";
+import EditPlaylist from "./EditPlaylist";
+import OpenModalButton from "../../OpenModalButton";
+import "./PlaylistPage.css";
 
 export default function PlaylistPage() {
   const { playlistId } = useParams();
@@ -19,8 +21,7 @@ export default function PlaylistPage() {
   }, [dispatch, playlistId]);
 
   const handlePlayPlaylist = () => {
-    // dispatch(actionPlayPlaylist(playlist.songs));
-    console.log("HELLO");
+    dispatch(actionPlayPlaylist(playlist.songs));
   };
 
   if (Object.values(playlist).length === 0) {
@@ -76,13 +77,13 @@ export default function PlaylistPage() {
               onClick={handlePlayPlaylist}>
               <i className="fa-solid fa-play" />
             </button>
-            {/* {user && user.id === playlist.ownerId && (
+            {user && user.id === playlist.ownerId && (
               <OpenModalButton
                 modalComponent={<EditPlaylist playlist={playlist} />}
                 buttonText={<i className="fa-solid fa-ellipsis" />}
                 buttonClass={"playlist-page__owner-options-button"}
               />
-            )} */}
+            )}
           </div>
 
           <div className="playlist-page__main-headers">

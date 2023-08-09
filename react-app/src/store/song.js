@@ -23,6 +23,11 @@ export const actionPlayAlbum = (album) => ({
   payload: album
 })
 
+export const actionPlayPlaylist = (playlist) => ({
+  type: PLAY_ALBUM,
+  payload: playlist
+})
+
 //thunks
 
 const initialState = { songs: [] };
