@@ -38,3 +38,25 @@ class Playlist(db.Model):
             dct["updatedAt"] = self.updated_at
 
         return dct
+
+    def to_dict_with_songs(self, timestamps=False):
+
+        owner = self.owner
+        songs = [song.to_dict(timestamps=True) for song in self.songs]
+
+        dct = {
+            "id": self.id,
+            "ownerId": self.owner_id,
+            "ownerName": owner.username,
+            "ownerPic": owner.profile_pic,
+            "name": self.name,
+            "description": self.description,
+            "imageUrl": self.image_url,
+            "songs": songs
+        }
+
+        if timestamps:
+            dct["createdAt"] = self.created_at
+            dct["updatedAt"] = self.updated_at
+
+        return dct

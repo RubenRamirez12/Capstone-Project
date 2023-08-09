@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import "./AlbumSongCard.css";
 import { useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
-import EditAlbumSong from "./EditAlbumSong";
-import AddToPlaylistForm from "./AddToPlaylistForm";
 import { useModal } from "../../../context/Modal";
+import "./PlaylistSongCard.css";
 
-export default function AlbumSongCard({ playSpecificSong, song, index }) {
+export default function PlaylistSongCard(playSpecificSong, song, index) {
   const [hovered, setHovered] = useState(false);
   const [dropdDownVisible, setDropDownVisible] = useState(false);
   const user = useSelector((state) => state.session.user);
@@ -67,23 +65,14 @@ export default function AlbumSongCard({ playSpecificSong, song, index }) {
         )}
         {dropdDownVisible && user && (
           <ul className="album-song-card__dropdown-menu" ref={dropDownRef}>
-            <li onClick={(e) => setDropDownVisible(false)}>
-              <OpenModalButton
-                modalComponent={
-                  <AddToPlaylistForm song={song} closeModal={closeModal} />
-                }
-                buttonText="Add to Playlist"
-                buttonClass={"album-song-card__play-song-button"}
-              />
-            </li>
-
+            {/* delete song if user owns the playlist */}
             {user && user.id === song.artistId && (
               <li onClick={(e) => setDropDownVisible(false)}>
-                <OpenModalButton
+                {/* <OpenModalButton
                   modalComponent={<EditAlbumSong currentSong={song} />}
                   buttonText="Edit Song"
                   buttonClass={"album-song-card__play-song-button"}
-                />
+                /> */}
               </li>
             )}
             <li />
@@ -91,6 +80,11 @@ export default function AlbumSongCard({ playSpecificSong, song, index }) {
         )}
       </div>
     </div>
+  );
+}
+
+/*
+
   );
 }
 
@@ -105,3 +99,4 @@ export default function AlbumSongCard({ playSpecificSong, song, index }) {
 //   <EditAlbumSong currentSong={song} />
 // </div>
 // )}
+*/

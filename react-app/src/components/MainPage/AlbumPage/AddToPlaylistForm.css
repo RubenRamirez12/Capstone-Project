@@ -1,0 +1,76 @@
+.add-to-playlist-form__div {
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 15px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 6px;
+  margin: -6px;
+}
+
+.add-to-playlist-form__header {
+  /* Your styles for the header */
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.add-to-playlist-form__list {
+  /* Your styles for the list */
+  height: 330px;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(60, 60, 60);
+}
+
+.add-to-playlist-form__list li {
+  /* Your styles for each list item */
+  padding: 10px;
+  color: white;
+}
+
+.add-to-playlist-form__list li:hover {
+  /* Your styles for list item hover */
+  background-color: rgb(80, 80, 80);
+  cursor: pointer;
+}
+
+.add-to-playlist-form__list-entree {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+}
+
+.add-to-playlist-form__image {
+  /* Your styles for the image */
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  background-color: rgb(47, 47, 47);
+}
+
+/* make overflow use ellipses on name */
+
+.add-to-playlist-form__name {
+  /* Your styles for the name */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+
+.add-to-playlist-form__no-playlists {
+    /* Your styles for the no-playlists message */
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
