@@ -20,6 +20,9 @@
     flex-direction: row;
     padding-left: 25px;
     gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .playlist-song-card__song-text {

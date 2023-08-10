@@ -53,6 +53,10 @@
 
 .album-page__album-name {
     font-size: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 1200px;
 }
 
 .album-page__album-info-image {

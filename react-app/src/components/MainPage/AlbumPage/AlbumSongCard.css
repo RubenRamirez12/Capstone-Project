@@ -20,6 +20,9 @@
     flex-direction: column;
     padding-left: 25px;
     gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .album-song-card__number {

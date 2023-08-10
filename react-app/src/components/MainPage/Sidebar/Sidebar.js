@@ -5,7 +5,7 @@ import {
   thunkCreatePlaylist,
   thunkGetAllPlaylists,
 } from "../../../store/playlist";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../../OpenModalButton";
 import CreateAlbum from "./CreateAlbum";
@@ -18,6 +18,8 @@ export default function Sidebar() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [droppedDown, setDroppedDown] = useState(false);
+  const dropdownRef = useRef(null);
+  const plusButtonRef = useRef(null);
 
   useEffect(() => {
     if (user) {
@@ -35,6 +37,29 @@ export default function Sidebar() {
       return history.push("/account/login");
     }
   };
+
+  const handleOutsideClick = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      plusButtonRef.current &&
+      !plusButtonRef.current.contains(event.target)
+    ) {
+      setDroppedDown(false);
+    }
+  };
+
+  useEffect(() => {
+    if (droppedDown) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [droppedDown]);
 
   return (
     <div className="sidebar__div">
@@ -58,12 +83,25 @@ export default function Sidebar() {
           Your Library
           <button
             className="sidebar__nav-button"
-            onClick={() => setDroppedDown(!droppedDown)}>
+            onClick={() => setDroppedDown(!droppedDown)}
+            ref={plusButtonRef}>
             <i className="fa-regular fa-plus" />
           </button>
         </div>
         {droppedDown && (
-          <div className="sidebar__dropdown">
+          <div
+            className="sidebar__dropdown"
+            ref={dropdownRef}
+            style={{
+              position: "absolute",
+              top: plusButtonRef.current
+                ? plusButtonRef.current.getBoundingClientRect().bottom
+                : "0px",
+              left: plusButtonRef.current
+                ? plusButtonRef.current.getBoundingClientRect().left
+                : "0px",
+              zIndex: 1,
+            }}>
             <button className="side__dropdown-item" onClick={createPlaylist}>
               <i className="fa-solid fa-music" />
               Create a new playlist
