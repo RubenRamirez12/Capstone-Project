@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../../store/session";
@@ -28,6 +28,20 @@ export default function Navbar() {
     await dispatch(actionClearPlaylist());
     await dispatch(logout());
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropped && !event.target.closest(".nav-bar__logged-in-div")) {
+        setDropped(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [dropped]);
 
   if (user) {
     return (

@@ -37,12 +37,6 @@
     height: 100%;
 }
 
-.playlist-page__playlist-info {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: flex-end;
-}
 
 .playlist-page__playlist-artist {
     display: flex;
@@ -51,8 +45,19 @@
     gap: 5px;
 }
 
+.playlist-page__playlist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
 .playlist-page__playlist-name {
     font-size: 90px;
+    width: 1200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .playlist-page__playlist-info-image {
