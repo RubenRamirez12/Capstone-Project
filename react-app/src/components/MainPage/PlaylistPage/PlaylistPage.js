@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetSinglePlaylist, actionClearPlaylist } from "../../../store/playlist";
+import {
+  thunkGetSinglePlaylist,
+  actionClearPlaylist,
+} from "../../../store/playlist";
 import { actionPlayPlaylist, actionPlaySongs } from "../../../store/song";
 import Navbar from "../Navbar/Navbar";
 import PlaylistSongCard from "./PlaylistSongCard";
@@ -116,15 +119,6 @@ export default function PlaylistPage() {
             })}
         </ul>
       </div>
-      {/* {user && user.id === playlist.artistId && (
-        <div className="playlist-page__create-song-div">
-          <OpenModalButton
-            modalComponent={<CreateSong playlist={playlist} />}
-            buttonText={"add a Song"}
-            buttonClass={"playlist-page__create-song-button"}
-          />
-        </div>
-      )} */}
     </div>
   );
 }
