@@ -68,8 +68,21 @@
 
 .nav-bar__logged-in-div {
     height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
 }
 
 .nav-bar__no-user-buttons {
     height: 50px;
+}
+
+.nav-bar__socials-button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: white;
 }

@@ -60,13 +60,13 @@ export default function PlaylistSongCard({ playSpecificSong, song, index }) {
       </div>
 
       <div className="playlist-song-card__song-length">
-        {user && (
+        {/* {user && (
           <button
             className="fa-solid fa-ellipsis playlist-song-card__options-button"
             onClick={() => setDropDownVisible(true)}
             style={{ visibility: hovered ? "visible" : "hidden" }}
           />
-        )}
+        )} */}
         {dropdDownVisible && user && (
           <ul className="playlist-song-card__dropdown-menu" ref={dropDownRef}>
             {user && user.id === song.artistId && (

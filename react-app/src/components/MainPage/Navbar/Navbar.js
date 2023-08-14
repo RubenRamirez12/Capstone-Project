@@ -29,6 +29,22 @@ export default function Navbar() {
     await dispatch(logout());
   };
 
+  const handleGithub = () => {
+    window.open("https://github.com/RubenRamirez12/Capstone-Project");
+  };
+
+  const handleLinkedIn = () => {
+    window.open("https://www.linkedin.com/in/ruben-ramirez-64a6a7265/");
+  };
+
+  const handlePortfolio = () => {
+    window.open("https://rubenramirez12.github.io/");
+  };
+
+  const handleWellfound = () => {
+    window.open("https://wellfound.com/u/ruben-ramirez-16");
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (dropped && !event.target.closest(".nav-bar__logged-in-div")) {
@@ -46,6 +62,19 @@ export default function Navbar() {
   if (user) {
     return (
       <div className="nav-bar__logged-in-div">
+        <button onClick={handlePortfolio} className="nav-bar__socials-button">
+          <i class="fa-solid fa-suitcase"></i>
+        </button>
+
+        <button onClick={handleLinkedIn} className="nav-bar__socials-button">
+          <i class="fa-brands fa-linkedin"></i>
+        </button>
+        <button onClick={handleWellfound} className="nav-bar__socials-button">
+          <i class="fa-brands fa-angellist"></i>
+        </button>
+        <button onClick={handleGithub} className="nav-bar__socials-button">
+          <i className="fa-brands fa-github"></i>
+        </button>
         <button
           onClick={handleProfileClick}
           className="nav-bar__profile-button">
@@ -66,6 +95,19 @@ export default function Navbar() {
   } else {
     return (
       <div className="nav-bar__no-user-buttons">
+        <button onClick={handlePortfolio} className="nav-bar__socials-button">
+          <i class="fa-solid fa-suitcase"></i>
+        </button>
+        <button onClick={handleLinkedIn} className="nav-bar__socials-button">
+          <i class="fa-brands fa-linkedin"></i>
+        </button>
+        <button onClick={handleWellfound} className="nav-bar__socials-button">
+          <i class="fa-brands fa-angellist"></i>
+        </button>
+
+        <button onClick={handleGithub} className="nav-bar__socials-button">
+          <i className="fa-brands fa-github"></i>
+        </button>
         <button className="nav-bar__signup" onClick={handleNavSignup}>
           Sign up
         </button>
