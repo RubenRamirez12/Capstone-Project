@@ -23,6 +23,7 @@
     flex-direction: row;
     gap: 25px;
     padding-top: 25px;
+    flex-wrap: wrap;
     text-decoration: none
 }
 
