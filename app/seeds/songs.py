@@ -304,6 +304,164 @@ def seed_songs():
         song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+That+Way.mp3"
     )
 
+    song_DuaLipa_1 = Song(
+        album_id = 5,
+        name = "Future Nostalgia",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Future+Nostalgia.mp3"
+    )
+    song_DuaLipa_2 = Song(
+        album_id = 5,
+        name = "Don't Start Now",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Don-'t+Start+Now.mp3"
+    )
+    song_DuaLipa_3 = Song(
+        album_id = 5,
+        name = "Cool",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Cool.mp3"
+    )
+    song_DuaLipa_4 = Song(
+        album_id = 5,
+        name = "Physical",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Physical.mp3"
+    )
+    song_DuaLipa_5 = Song(
+        album_id = 5,
+        name = "Levitating",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Levitating.mp3"
+    )
+    song_DuaLipa_6 = Song(
+        album_id = 5,
+        name = "Pretty Please",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Pretty+Please.mp3"
+    )
+    song_DuaLipa_7 = Song(
+        album_id = 5,
+        name = "Hallucinate",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Hallucinate.mp3"
+    )
+    song_DuaLipa_8 = Song(
+        album_id = 5,
+        name = "Love Again",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Love+Again.mp3"
+    )
+    song_DuaLipa_9 = Song(
+        album_id = 5,
+        name = "Break My Heart",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Break+My+Heart.mp3"
+    )
+    song_DuaLipa_10 = Song(
+        album_id = 5,
+        name = "Good In Bed",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Good+In+Bed.mp3"
+    )
+    song_DuaLipa_11 = Song(
+        album_id = 5,
+        name = "Boys Will Be Boys",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Dua+Lipa+-+Boys+Will+Be+Boys.mp3"
+    )
+
+    song_LilUziVert2_1 = Song(
+        album_id = 6,
+        name = "Two®",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Two%C2%AE.mp3"
+    )
+    song_LilUziVert2_2 = Song(
+        album_id = 6,
+        name = "444+222",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+444%2B222.mp3"
+    )
+    song_LilUziVert2_3 = Song(
+        album_id = 6,
+        name = "Sauce It Up",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Sauce+It+Up.mp3"
+    )
+    song_LilUziVert2_4 = Song(
+        album_id = 6,
+        name = "No Sleep Leak",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+No+Sleep+Leak.mp3"
+    )
+    song_LilUziVert2_5 = Song(
+        album_id = 6,
+        name = "The Way Life Goes (feat. Oh Wonder)",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+The+Way+Life+Goes+(feat.+Oh+Wonder).mp3"
+    )
+    song_LilUziVert2_6 = Song(
+        album_id = 6,
+        name = "For Real",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+For+Real.mp3"
+    )
+    song_LilUziVert2_7 = Song(
+        album_id = 6,
+        name = "Feelings Mutual",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Feelings+Mutual.mp3"
+    )
+    song_LilUziVert2_8 = Song(
+        album_id = 6,
+        name = "Neon Guts (feat. Pharrell Williams)",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Neon+Guts+(feat.+Pharrell+Williams).mp3"
+    )
+    song_LilUziVert2_9 = Song(
+        album_id = 6,
+        name = "Early 20 Rager",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Early+20+Rager.mp3"
+    )
+    song_LilUziVert2_10 = Song(
+        album_id = 6,
+        name = "UnFazed (feat. The Weeknd)",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+UnFazed+(feat.+The+Weeknd).mp3"
+    )
+    song_LilUziVert2_11 = Song(
+        album_id = 6,
+        name = "Pretty Mami",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Pretty+Mami.mp3"
+    )
+    song_LilUziVert2_12 = Song(
+        album_id = 6,
+        name = "How To Talk",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+How+to+Talk.mp3"
+    )
+    song_LilUziVert2_13 = Song(
+        album_id = 6,
+        name = "X",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+X.mp3"
+    )
+    song_LilUziVert2_14 = Song(
+        album_id = 6,
+        name = "Malfunction",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Malfunction.mp3"
+    )
+    song_LilUziVert2_15 = Song(
+        album_id = 6,
+        name = "Dark Queen",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Dark+Queen.mp3"
+    )
+    song_LilUziVert2_16 = Song(
+        album_id = 6,
+        name = "XO TOUR Llif3",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+XO+Tour+Llif3.mp3"
+    )
+    song_LilUziVert2_17 = Song(
+        album_id = 6,
+        name = "Skir Skirr",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Skir+Skirr.mp3"
+    )
+    song_LilUziVert2_18 = Song(
+        album_id = 6,
+        name = "Loaded",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Loaded.mp3"
+    )
+    song_LilUziVert2_19 = Song(
+        album_id = 6,
+        name = "Diamonds All On My Wrist",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+Diamonds+All+on+My+Wrist.mp3"
+    )
+    song_LilUziVert2_20 = Song(
+        album_id = 6,
+        name = "20 Min",
+        song_url = "https://groovify-bucket.s3.us-west-1.amazonaws.com/Lil+Uzi+Vert+-+20+Min.mp3"
+    )
+
+
 
 
 
@@ -369,6 +527,39 @@ def seed_songs():
     db.session.add(song_LilUziVert_16)
     db.session.add(song_LilUziVert_17)
     db.session.add(song_LilUziVert_18)
+
+    db.session.add(song_DuaLipa_1)
+    db.session.add(song_DuaLipa_2)
+    db.session.add(song_DuaLipa_3)
+    db.session.add(song_DuaLipa_4)
+    db.session.add(song_DuaLipa_5)
+    db.session.add(song_DuaLipa_6)
+    db.session.add(song_DuaLipa_7)
+    db.session.add(song_DuaLipa_8)
+    db.session.add(song_DuaLipa_9)
+    db.session.add(song_DuaLipa_10)
+    db.session.add(song_DuaLipa_11)
+
+    db.session.add(song_LilUziVert2_1)
+    db.session.add(song_LilUziVert2_2)
+    db.session.add(song_LilUziVert2_3)
+    db.session.add(song_LilUziVert2_4)
+    db.session.add(song_LilUziVert2_5)
+    db.session.add(song_LilUziVert2_6)
+    db.session.add(song_LilUziVert2_7)
+    db.session.add(song_LilUziVert2_8)
+    db.session.add(song_LilUziVert2_9)
+    db.session.add(song_LilUziVert2_10)
+    db.session.add(song_LilUziVert2_11)
+    db.session.add(song_LilUziVert2_12)
+    db.session.add(song_LilUziVert2_13)
+    db.session.add(song_LilUziVert2_14)
+    db.session.add(song_LilUziVert2_15)
+    db.session.add(song_LilUziVert2_16)
+    db.session.add(song_LilUziVert2_17)
+    db.session.add(song_LilUziVert2_18)
+    db.session.add(song_LilUziVert2_19)
+    db.session.add(song_LilUziVert2_20)
 
     db.session.commit()
 

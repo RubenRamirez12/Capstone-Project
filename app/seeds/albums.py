@@ -31,11 +31,27 @@ def seed_albums():
         image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/Stories-Avicii.png",
         single=False,
     )
+    album5= Album(
+        artist_id=6,
+        name="Future Nostalgia",
+        description="Album by Dua Lipa",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/DuaLipaPFP.jpeg",
+        single=False,
+    )
+    album6 = Album(
+        artist_id=3,
+        name="Luv Is Rage 2 (Deluxe)",
+        description="Album by Lil Uzi Vert",
+        image_url="https://groovify-bucket.s3.us-west-1.amazonaws.com/LuvIsRage21.jpg",
+        single=False,
+    )
 
     db.session.add(album1)
     db.session.add(album2)
     db.session.add(album3)
     db.session.add(album4)
+    db.session.add(album5)
+    db.session.add(album6)
 
     db.session.commit()
 
