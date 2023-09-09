@@ -9,14 +9,21 @@ def seed_users():
     lilUzi = User(username="Lil Uzi Vert", email="lilUzi@aa.io", password="password", profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/liluziPfp.jpeg")
     juiceWRLD = User(username="Juice WRLD", email="juiceWRLD@aa.io", password='password', profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/JuiceWrldPfp.jpeg")
     avicii = User(username="Avicii", email="avicii@aa.io", password='password', profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/AviciiPfp.jpeg")
+    duaLipa = User(username="Dua Lipa", email="duaLipa@aa.io" , password='password', profile_pic="https://groovify-bucket.s3.us-west-1.amazonaws.com/DuaLipaPFP.jpeg")
+
+
 
     db.session.add(demo)
     db.session.add(tevvez)
     db.session.add(lilUzi)
     db.session.add(juiceWRLD)
     db.session.add(avicii)
+    db.session.add(duaLipa)
 
     db.session.commit()
+
+    # Future Nostalga Dua Lipa
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
