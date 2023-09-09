@@ -40,6 +40,7 @@
 .sidebar__dropdown {
   position: absolute;
   left: 290px;
+  height: fit-content;
   bottom: 610px;
   display: flex;
   flex-direction: column;
