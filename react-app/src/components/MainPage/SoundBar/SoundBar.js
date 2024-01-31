@@ -13,9 +13,19 @@ export default function SoundBar() {
   const [songDuration, setSongDuration] = useState(1);
   const [volume, setVolume] = useState(0.5);
 
+
   const audioRef = useRef();
 
   // console.log("THE CURRENT SONG!", currentSong)
+
+  //check if there is local storage
+  useEffect(() => {
+    let localVolume = localStorage.getItem("volume");
+
+    if(localVolume) {
+      setVolume(localVolume)
+    }
+  },[])
 
   //sets up new song
   useEffect(() => {
@@ -59,6 +69,7 @@ export default function SoundBar() {
   const handleVolume = (e) => {
     const volumeVal = parseFloat(e.target.value);
     setVolume(volumeVal);
+    localStorage.setItem("volume", volumeVal)
     audioRef.current.volume = volumeVal;
   };
 
